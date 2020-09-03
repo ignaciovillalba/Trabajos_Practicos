@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "funciones.h"
 
 
 void MainMenu (float numberA, float numberB)
@@ -28,4 +29,98 @@ float obtainNumber(char message[])
     scanf("%f",&auxiliaryNumber);
 
     return auxiliaryNumber;
+}
+
+void doSwitch(float numberA,float numberB)
+{
+    int option;
+    float additionValue;
+    float substractionValue;
+    float multiplicationValue;
+    float divisionValue;
+
+    do
+    {
+        MainMenu(numberA,numberB);
+        option=obtainNumber("\n\n Ingrese una opcion: ");
+
+        switch(option)
+        {
+        case 1:
+            system("cls");
+            numberA=obtainNumber("\n Ingrese primer valor: ");
+            system("cls");
+            break;
+        case 2:
+            system("cls");
+            numberB=obtainNumber("\n Ingrese segundo valor: ");
+            system("cls");
+            break;
+        case 3:
+            system("cls");
+            additionValue=additionFunction(numberA,numberB);
+            substractionValue=substractionFunction(numberA,numberB);
+            multiplicationValue=multiplicationFunction(numberA,numberB);
+            divisionValue=divisionFunction(numberA,numberB);
+            printf("Se han calculado todo los resultados.Presione 4 para conocer los resultados.\n");
+            system("pause");
+            system("cls");
+            break;
+        case 4:
+            system("cls");
+            printf("\n A)Suma= %.2f",additionValue);
+            printf("\n B)Resta= %.2f",substractionValue);
+            printf("\n C)Multiplicacion= %.2f",multiplicationValue);
+            printf("\n D)Division= %.2f\n\n",divisionValue);
+            system("pause");
+            system("cls");
+            break;
+        case 5:
+            system("cls");
+            printf("\n Eligio salir \n");
+            break;
+        default:
+            MainMenu(numberA,numberB);
+            printf("ERROR! Eso no es una opcion: %d",option);
+            system("cls");
+            break;
+        }
+    }
+    while (option!=5);
+}
+
+float additionFunction(float numberA,float numberB)
+{
+    float auxiliaryValue;
+
+    auxiliaryValue= numberA+(numberB);
+
+    return auxiliaryValue;
+}
+
+float substractionFunction(float numberA,float numberB)
+{
+    float auxiliaryValue;
+
+    auxiliaryValue = numberA-(numberB);
+
+    return auxiliaryValue;
+}
+
+float multiplicationFunction(float numberA,float numberB)
+{
+    float auxiliaryValue;
+
+    auxiliaryValue = (numberA)*(numberB);
+
+    return auxiliaryValue;
+}
+
+float divisionFunction(float numberA,float numberB)
+{
+    float auxiliaryValue;
+
+    auxiliaryValue = (numberA)/(numberB);
+
+    return auxiliaryValue;
 }
