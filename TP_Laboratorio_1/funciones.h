@@ -10,5 +10,6 @@ float additionFunction(float numberA,float numberB);
 float substractionFunction(float numberA,float numberB);
 float multiplicationFunction(float numberA,float numberB);
 float divisionFunction(float numberA,float numberB);
+int funcionFactorial (float number);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -38,6 +38,8 @@ void doSwitch(float numberA,float numberB)
     float substractionValue;
     float multiplicationValue;
     float divisionValue;
+    int factorialA;
+    int factorialB;
 
     do
     {
@@ -62,7 +64,9 @@ void doSwitch(float numberA,float numberB)
             substractionValue=substractionFunction(numberA,numberB);
             multiplicationValue=multiplicationFunction(numberA,numberB);
             divisionValue=divisionFunction(numberA,numberB);
-            printf("Se han calculado todo los resultados.Presione 4 para conocer los resultados.\n");
+            factorialA=funcionFactorial(numberA);
+            factorialB=funcionFactorial(numberB);
+            printf("\nSe han calculado todo los resultados.\nPresione 4 para conocer los resultados.\n\n");
             system("pause");
             system("cls");
             break;
@@ -71,7 +75,9 @@ void doSwitch(float numberA,float numberB)
             printf("\n A)Suma= %.2f",additionValue);
             printf("\n B)Resta= %.2f",substractionValue);
             printf("\n C)Multiplicacion= %.2f",multiplicationValue);
-            printf("\n D)Division= %.2f\n\n",divisionValue);
+            printf("\n D)Division= %.2f",divisionValue);
+            printf("\n Factorial A: %d",factorialA);
+            printf("\n Factorial B: %d\n",factorialB);
             system("pause");
             system("cls");
             break;
@@ -123,4 +129,30 @@ float divisionFunction(float numberA,float numberB)
     auxiliaryValue = (numberA)/(numberB);
 
     return auxiliaryValue;
+}
+
+int funcionFactorial (float number)
+{
+
+    int factorial;
+    int returnValue;
+    long int factor = 1;
+
+    if (number== (int) number && number>=0)
+    {
+        for (factorial = number; factorial > 0; factorial--)
+        {
+            factor = factor * factorial;
+            returnValue=factor;
+        }
+    }
+    else if (number<0)
+    {
+        returnValue= -1;
+    }
+    else
+    {
+        returnValue= 0;
+    }
+    return (returnValue);
 }
