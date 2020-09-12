@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1599876005 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.c
+1599876539 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"

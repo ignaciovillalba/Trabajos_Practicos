@@ -7,7 +7,7 @@ int main()
     float numberA=0;
     float numberB=0;
 
-    doSwitch(numberA,numberB);
+    doSwitch(numberA,numberB);/**< Según la opcion elegida se realiza una funcion*/
 
     return 0;
 }

@@ -6,8 +6,8 @@
 void MainMenu (float numberA, float numberB)
 {
     printf("BIENVENIDOS A LA CALCULADORA");
-    printf("\n\n 1) Ingresar 1er operando (A= %.2f )",numberA);
-    printf("\n 2) Ingresar 2do operando (B= %.2f )",numberB);
+    printf("\n\n 1) Ingresar 1er operando (A= %.2f )",numberA);/**< Se muestra el valor cargado en A hasta el momento */
+    printf("\n 2) Ingresar 2do operando (B= %.2f )",numberB);/**< Se muestra el valor cargado en B hasta el momento */
     printf("\n 3)Calcular todas las operaciones");
     printf("\n\t A)Calcular la suma (A+B)");
     printf("\n\t B)Calcular la resta (A-B)");
@@ -53,17 +53,17 @@ void doSwitch(float numberA,float numberB)
         {
         case 1:
             numberA=obtainNumber("\n Eligio la 1ra opcion.\nIngrese primer valor: ");
-            comprobacionIngresoA=1;
+            comprobacionIngresoA=1;/**< Se verifica que se haya cargado un valor en numberA */
             system("cls");
             break;
         case 2:
             numberB=obtainNumber("\nEligio la 2da opcion.\n Ingrese segundo valor: ");
-            comprobacionIngresoB=1;
+            comprobacionIngresoB=1;/**< Se verifica que se haya cargado un valor en numberB */
             system("cls");
             break;
         case 3:
 
-            if(comprobacionIngresoA==1 && comprobacionIngresoB==1)
+            if(comprobacionIngresoA==1 && comprobacionIngresoB==1)/**< Si ambos valores se ingresaron se realiza el switch 3 */
             {
                 additionValue=additionFunction(numberA,numberB);
                 substractionValue=substractionFunction(numberA,numberB);
@@ -72,7 +72,7 @@ void doSwitch(float numberA,float numberB)
                 factorialA=factorialFunction(numberA);
                 factorialB=factorialFunction(numberB);
                 printf("\nSe han realizado todas las operaciones.\nPresione 4 para informar los resultados.\n\n");
-                comprobacionCaso3=1;
+                comprobacionCaso3=1;/**< Se comprueba que se haya hecho el calculo de los valores. */
             }
             else if (comprobacionIngresoA==0 && comprobacionIngresoB==1)
             {
@@ -104,9 +104,9 @@ void doSwitch(float numberA,float numberB)
                 resultMessage("El resultado de la resta es: ", substractionValue);
                 resultMessage("El resultado de la multiplicacion es: ", multiplicationValue);
 
-                if (divisionValue == 0)
+                if (numberA == 0)
                 {
-                    resultMessage("No se puede dividir por cero. B= ", numberB);
+                    resultMessage("No se puede dividir por cero. A= ", numberB);
                 }
                 else
                 {
@@ -150,11 +150,12 @@ void doSwitch(float numberA,float numberB)
             break;
         case 5:
             system("cls");
-            printf("\n Eligio salir \n");
+            printf("\nUsted eligio la opcion de salir de la calculadora.Hasta luego.\n\n");
             break;
         default:
             MainMenu(numberA,numberB);
-            printf("ERROR! Eso no es una opcion: %d",option);
+            resultMessage("\n\nERROR! Eso no es una opcion: ",option);
+            system("pause");
             system("cls");
             break;
         }

@@ -12,18 +12,18 @@ void MainMenu (float numberA, float numberB);
 
 /** \brief Obtener numeros
  *
- * \param numero float Numero cargado actualmente.
  * \param mensaje[] char Mensaje de ingreso de valor.
  * \return float Numero obtenido al ingreso del usuario.
  *
  */
 float obtainNumber(char message[]);
 
-/** \brief Obtener numeros
+
+/** \brief Realiza el switch segun opcion
  *
- * \param numero float Numero cargado actualmente.
- * \param mensaje[] char Mensaje de ingreso de valor.
- * \return float Numero obtenido al ingreso del usuario.
+ * \param numberA float primer valor a interactuar segun la opcion elegida.
+ * \param numberB float segundo valor a interactuar segun la opcion elegida.
+ * \return void No retorna nada, ya que solo realiza las funcion de switch.
  *
  */
 void doSwitch(float numberA, float numberB);
@@ -64,16 +64,22 @@ float multiplicationFunction(float numberA,float numberB);
  */
 float divisionFunction(float numberA,float numberB);
 
-/** \brief Realiza validacion de si es un valor entero.
+/** \brief Realiza validacion de si es un valor entero y positivo.
  *         De ser verdad se multiplica todos los numeros anteriores al numero seleccionado hasta llegar a 1
  *
- * \param  Valor a validar de ser entero y luego factorearlo.
+ * \param  Valor a validar de ser entero, positivo y luego factorearlo.
  * \return Retorna el factorial del valor
  *
  */
 int factorialFunction (float number);
 
-
+/** \brief Muestra mensaje según funcion solicitada.
+ *
+ * \param msj[] char Mensaje de resultado a mostrar.
+ * \param valor float valor de resultado a mostrar.
+ * \return void no retorna ya que solo informa datos.
+ *
+ */
 void resultMessage(char msg[], float valueResult);
 
 #endif // FUNCIONES_H_INCLUDED
