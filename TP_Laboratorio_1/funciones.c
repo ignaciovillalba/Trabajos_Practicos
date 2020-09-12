@@ -95,7 +95,7 @@ void doSwitch(float numberA,float numberB)
                 system("pause");
                 system("cls");
             }
-
+            fflush(stdin);
             break;
         case 4:
             if (comprobacionIngresoA==1 && comprobacionIngresoB==1 && comprobacionCaso3==1)
