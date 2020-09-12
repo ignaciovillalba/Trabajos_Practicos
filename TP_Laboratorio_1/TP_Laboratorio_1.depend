@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1599502743 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.c
+1599876005 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 
-1599165209 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\main.c
+1599863827 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 
-1599502528 c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.h
+1599866656 c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_1\funciones.h
 

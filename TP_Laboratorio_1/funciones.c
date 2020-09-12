@@ -16,7 +16,6 @@ void MainMenu (float numberA, float numberB)
     printf("\n\t E)Calcular el factorial (A! B!)");
     printf("\n 4)Informar resultados");
     printf("\n 5)Salir");
-
 }
 
 float obtainNumber(char message[])
@@ -40,46 +39,114 @@ void doSwitch(float numberA,float numberB)
     float divisionValue;
     int factorialA;
     int factorialB;
+    int comprobacionIngresoA=0;
+    int comprobacionIngresoB=0;
+    int comprobacionCaso3=0;
 
     do
     {
         MainMenu(numberA,numberB);
-        option=obtainNumber("\n\n Ingrese una opcion: ");
+        option=obtainNumber("\n\nIngrese una opcion: ");
+        system("cls");
 
         switch(option)
         {
         case 1:
-            system("cls");
-            numberA=obtainNumber("\n Ingrese primer valor: ");
+            numberA=obtainNumber("\n Eligio la 1ra opcion.\nIngrese primer valor: ");
+            comprobacionIngresoA=1;
             system("cls");
             break;
         case 2:
-            system("cls");
-            numberB=obtainNumber("\n Ingrese segundo valor: ");
+            numberB=obtainNumber("\nEligio la 2da opcion.\n Ingrese segundo valor: ");
+            comprobacionIngresoB=1;
             system("cls");
             break;
         case 3:
-            system("cls");
-            additionValue=additionFunction(numberA,numberB);
-            substractionValue=substractionFunction(numberA,numberB);
-            multiplicationValue=multiplicationFunction(numberA,numberB);
-            divisionValue=divisionFunction(numberA,numberB);
-            factorialA=funcionFactorial(numberA);
-            factorialB=funcionFactorial(numberB);
-            printf("\nSe han calculado todo los resultados.\nPresione 4 para conocer los resultados.\n\n");
-            system("pause");
-            system("cls");
+
+            if(comprobacionIngresoA==1 && comprobacionIngresoB==1)
+            {
+                additionValue=additionFunction(numberA,numberB);
+                substractionValue=substractionFunction(numberA,numberB);
+                multiplicationValue=multiplicationFunction(numberA,numberB);
+                divisionValue=divisionFunction(numberA,numberB);
+                factorialA=factorialFunction(numberA);
+                factorialB=factorialFunction(numberB);
+                printf("\nSe han realizado todas las operaciones.\nPresione 4 para informar los resultados.\n\n");
+                comprobacionCaso3=1;
+            }
+            else if (comprobacionIngresoA==0 && comprobacionIngresoB==1)
+            {
+                numberA=obtainNumber("\nERROR! no ingreso ningun 1er valor.\nIngrese primer valor: ");
+                comprobacionIngresoA=1;
+                MainMenu (numberA, numberB);
+                system("cls");
+            }
+            else if(comprobacionIngresoA==1 && comprobacionIngresoB==0)
+            {
+                numberB = obtainNumber ("\nERROR! no ingreso ningun 2do valor.\nIngrese segundo valor: ");
+                comprobacionIngresoB=1;
+                MainMenu(numberA, numberB);
+                system("cls");
+            }
+            else
+            {
+                MainMenu (numberA, numberB);
+                printf("\n\nERROR! Usted no cargo ningun valor en A o B .\n");
+                system("pause");
+                system("cls");
+            }
+
             break;
         case 4:
-            system("cls");
-            printf("\n A)Suma= %.2f",additionValue);
-            printf("\n B)Resta= %.2f",substractionValue);
-            printf("\n C)Multiplicacion= %.2f",multiplicationValue);
-            printf("\n D)Division= %.2f",divisionValue);
-            printf("\n Factorial A: %d",factorialA);
-            printf("\n Factorial B: %d\n",factorialB);
-            system("pause");
-            system("cls");
+            if (comprobacionIngresoA==1 && comprobacionIngresoB==1 && comprobacionCaso3==1)
+            {
+                resultMessage("\nEl resultado de la suma es: ", additionValue);
+                resultMessage("El resultado de la resta es: ", substractionValue);
+                resultMessage("El resultado de la multiplicacion es: ", multiplicationValue);
+
+                if (divisionValue == 0)
+                {
+                    resultMessage("No se puede dividir por cero. B= ", numberB);
+                }
+                else
+                {
+                    resultMessage("El resultado de la division es: ", divisionValue);
+                }
+
+                if (factorialA==0 || factorialA==-1)
+                {
+                    resultMessage("No se puede calcular el factorial de un numero con coma o negativo. A=", numberA);
+                }
+                else
+                {
+                    resultMessage ("El factorial de A es: ", factorialA);
+                }
+
+                if (factorialB==0 || factorialB==-1)
+                {
+                    resultMessage("No se puede calcular el factorial de un numero con coma o negativo. B=", numberB);
+                }
+                else
+                {
+                    resultMessage ("El factorial de B es: ", factorialB);
+                }
+                system("pause");
+                system("cls");
+            }
+            else if (comprobacionIngresoA==0 || comprobacionIngresoB==0)
+            {
+                MainMenu (numberA, numberB);
+                printf("\n\nERROR! Usted no cargo ningun valor en A o B .\n");
+                system("pause");
+                system("cls");
+            }
+            else if(comprobacionCaso3==0)
+            {
+                MainMenu(numberA, numberB);
+                printf("\n\nERROR! Usted no realizo el calculo de los valores.\n");
+                system("pause");
+                system("cls");
+            }
             break;
         case 5:
             system("cls");
@@ -131,7 +198,7 @@ float divisionFunction(float numberA,float numberB)
     return auxiliaryValue;
 }
 
-int funcionFactorial (float number)
+int factorialFunction (float number)
 {
 
     int factorial;
@@ -155,4 +222,9 @@ int funcionFactorial (float number)
         returnValue= 0;
     }
     return (returnValue);
+}
+
+void resultMessage(char msg[], float valueResult)
+{
+    printf("%s %.2f\n\n", msg, valueResult);
 }
