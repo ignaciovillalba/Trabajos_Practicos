@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1600715228 source:c:\users\nacho\desktop\codigo juego nico\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+
+1600715385 source:c:\users\nacho\desktop\codigo juego nico\trabajos_practicos\tp_laboratorio_2\systememployee\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+
+1600714369 c:\users\nacho\desktop\codigo juego nico\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.h
+
