@@ -26,22 +26,22 @@ int main()
         switch(option)
         {
         case 1:
-            printf("\nA\n");
+            printf("\nAlta empleados\n");
             system("pause");
             system("cls");
             break;
         case 2:
-            printf("\nB\n");
+            printf("\nModificar empleados.\n");
             system("pause");
             system("cls");
             break;
         case 3:
-            printf("\nC\n");
+            printf("\nBaja empleados.\n");
             system("pause");
             system("cls");
             break;
         case 4:
-            printf("\nD\n");
+            printf("\nINFORMAR\n");
             system("pause");
             system("cls");
             break;
