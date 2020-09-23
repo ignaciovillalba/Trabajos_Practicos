@@ -26,7 +26,7 @@ int GetOption(char message[]);
  * \return int Return validated number.
  *
  */
-int GetInt(char message[],int sizeInt);
+int GetInt(char message[]);
 
 
 /** \brief Ask the user to enter a float number.

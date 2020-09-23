@@ -44,7 +44,7 @@ int GetOption(char message[])
     return number;
 }
 
-int GetInt(char message[],int sizeInt)
+int GetInt(char message[])
 {
     int number;
     char auxilaryNum[11];

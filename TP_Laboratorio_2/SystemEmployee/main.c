@@ -1,32 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ArrayEmployees.h"
+#include "GetElements.h"
 #define SIZE 4
 
 int main()
 {
-    sEmployee listEmployee[SIZE];
     int option;
-
+    int employeeCounter=0;
+    int employeeLoaded=-1;
+    sEmployee listEmployee[SIZE];
 
     initEmployees(listEmployee,SIZE);
     do
     {
         mainMenu();
-        printf("\n Selecciones una opcion: ");
-        scanf("%d",&option);
+        option= GetOption("Ingrese opcion: ");
 
         while (option<1 || option>5)
         {
             system("cls");
             mainMenu();
-            printf("\n ERROR! ESA NO ES UNA OPCION: ");
-            scanf("%d",&option);
+            message("ERROR! Eso no es una opcion:",option);
+            option= GetOption("Reingrese opcion: ");
         }
         switch(option)
         {
         case 1:
             printf("\nAlta empleados\n");
+            employeeCounter++;
+            employeeLoaded=doSwitchCase1(listEmployee,SIZE,employeeCounter,employeeLoaded);
             system("pause");
             system("cls");
             break;
@@ -56,5 +59,5 @@ int main()
     }
     while(option !=5);
 
-        return 0;
+    return 0;
 }

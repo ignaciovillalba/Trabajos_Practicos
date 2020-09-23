@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "ArrayEmployees.h"
+#include "GetElements.h"
 #define LIBRE 0
 #define OCUPADO 1
 
@@ -18,27 +20,65 @@ void mainMenu()
     printf(" 5)Salir\n");
 }
 
-void initEmployees(sEmployee employeeList[], int sizeEmployee)
+int doSwitchCase1(sEmployee employeeList[], int sizeEmployee, int employeeCounter, int employeeLoaded)
 {
-    int i;
-
-  for(i=0; i<sizeEmployee; i++)
-  {
-      employeeList[i].isEmpty = LIBRE;
-  }
+    employeeLoaded=addEmployee(employeeList,sizeEmployee,employeeCounter);
+        if(employeeLoaded==1)
+    {
+        printf("\nEMPLEADO INGRESADO\n\n");
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        mainMenu();
+        printf("NO HAY MAS ESPACIO!!\n");
+        system("pause");
+        system("cls");
+    }
+    return employeeLoaded;
 }
 
-
-void loadEmployee(sEmployee employeeList[], int sizeEmployee)
+int addEmployee(sEmployee employeeList[],int sizeEmployee,int cont)
 {
-  int index;
+    int index;
+    int auxReturn=-1;
+    index=findFree(employeeList,sizeEmployee);
 
-  index = findFree(employeeList, sizeEmployee);
 
-  if(index!=-1)
-  {
-      employeeList[index] = crearUnAlumno();
-  }
+    if(index!=-1)
+    {
+        printf(" _____________________\n");
+        printf("|   ALTA EMPLEADO     |\n");
+        printf("|_____________________|\n");
+
+        employeeList[index].IdEmployee=GenerarId(999,cont);
+        printf("El ID del empleado es: %d\n",employeeList[index].IdEmployee);
+        GetString("Ingrese el nombre del empleado: ",employeeList[index].name,sizeEmployee);
+        GetString("Ingrese el apellido del empleado: ",employeeList[index].lastName,sizeEmployee);
+        employeeList[index].salary=GetFloat("Ingrese el sueldo del empleado: ");
+        employeeList[index].sector=GetInt("Ingrese el sector del empleado(1 a 10): ");
+        while (employeeList[index].sector < 1 || employeeList[index].sector > 10)
+        {
+         employeeList[index].sector=GetInt("Reingrese el sector del empleado: ");
+        }
+        employeeList[index].isEmpty=OCUPADO;
+
+        auxReturn=1;
+    }
+    return auxReturn;
+}
+
+int initEmployees(sEmployee employeeList[],int sizeEmployee)
+{
+    int i;
+    int auxReturn=-1;
+    for(i=0; i<sizeEmployee; i++)
+    {
+        employeeList[i].isEmpty=LIBRE;
+        auxReturn=0;
+    }
+    return auxReturn;
 }
 
 int findFree(sEmployee employeeList[], int sizeEmployee)
@@ -57,3 +97,7 @@ int findFree(sEmployee employeeList[], int sizeEmployee)
   return index;
 }
 
+void message(char msg[], float value)
+{
+    printf("%s %.2f\n\n", msg, value);
+}

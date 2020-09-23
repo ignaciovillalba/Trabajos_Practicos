@@ -35,6 +35,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ArrayEmployees.h" />
+		<Unit filename="GetElements.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GetElements.h" />
+		<Unit filename="Validation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Validation.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
