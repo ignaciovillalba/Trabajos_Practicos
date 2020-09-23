@@ -14,4 +14,6 @@ typedef struct
 
 void mainMenu();
 
+void initEmployees(sEmployee listEmployee[], int sizeEmployee);
+
 #endif // ARRAYEMPLOYEES_H_INCLUDED

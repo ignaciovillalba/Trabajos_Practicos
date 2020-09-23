@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define LIBRE 0
+#define OCUPADO 1
 
 void mainMenu()
 {
@@ -16,4 +18,42 @@ void mainMenu()
     printf(" 5)Salir\n");
 }
 
+void initEmployees(sEmployee employeeList[], int sizeEmployee)
+{
+    int i;
+
+  for(i=0; i<sizeEmployee; i++)
+  {
+      employeeList[i].isEmpty = LIBRE;
+  }
+}
+
+
+void loadEmployee(sEmployee employeeList[], int sizeEmployee)
+{
+  int index;
+
+  index = findFree(employeeList, sizeEmployee);
+
+  if(index!=-1)
+  {
+      employeeList[index] = crearUnAlumno();
+  }
+}
+
+int findFree(sEmployee employeeList[], int sizeEmployee)
+{
+  int i;
+  int index = -1;
+
+  for(i=0; i<sizeEmployee; i++)
+  {
+      if(employeeList[i].isEmpty==LIBRE)
+      {
+          index =  i;
+          break;
+      }
+  }
+  return index;
+}
 

@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ArrayEmployees.h"
+#define SIZE 4
 
 int main()
 {
+    sEmployee listEmployee[SIZE];
     int option;
 
+
+    initEmployees(listEmployee,SIZE);
     do
     {
         mainMenu();
@@ -42,6 +46,7 @@ int main()
             system("cls");
             break;
         case 5:
+            system("cls");
             printf("\nUsted eligio la opcion de salir. Hasta luego\n");
             system("pause");
             system("cls");
