@@ -10,19 +10,20 @@
 
 1600714369 c:\users\nacho\desktop\codigo juego nico\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.h
 
-1600874894 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.c
+1601323086 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"GetElements.h"
+
+1601323455 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayEmployees.h"
 	"GetElements.h"
 
-1600874894 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\main.c
-	<stdio.h>
-	<stdlib.h>
-	"ArrayEmployees.h"
-	"GetElements.h"
-
-1600874865 c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.h
+1601323621 c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\arrayemployees.h
 
 1600874737 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\getelements.c
 	<stdio.h>

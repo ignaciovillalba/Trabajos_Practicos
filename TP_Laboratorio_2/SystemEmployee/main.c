@@ -2,16 +2,18 @@
 #include <stdlib.h>
 #include "ArrayEmployees.h"
 #include "GetElements.h"
-#define SIZE 4
+#define SIZE 6
 
 int main()
 {
     int option;
-    int employeeCounter=0;
     int employeeLoaded=-1;
-    sEmployee listEmployee[SIZE];
+    int employeeCounter=0;
+    int idGenerator=1;
 
-    initEmployees(listEmployee,SIZE);
+    sEmployee listEmployee[SIZE];
+    initEmployee(listEmployee,SIZE);
+    hardcodearEmployee(listEmployee,SIZE);
     do
     {
         mainMenu();
@@ -27,30 +29,49 @@ int main()
         switch(option)
         {
         case 1:
-            printf("\nAlta empleados\n");
-            employeeCounter++;
-            employeeLoaded=doSwitchCase1(listEmployee,SIZE,employeeCounter,employeeLoaded);
+            employeeLoaded=doSwitchCase1(listEmployee,SIZE,idGenerator);
+            if(employeeLoaded==1)
+            {
+                employeeCounter++;
+                idGenerator++;
+            }
             system("pause");
             system("cls");
             break;
         case 2:
+            if(employeeCounter!=0)
+            {
             printf("\nModificar empleados.\n");
+            }
+            else
+            {
+                printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
+            }
             system("pause");
             system("cls");
             break;
         case 3:
-            printf("\nBaja empleados.\n");
+            if(employeeCounter!=0)
+            {
+                removeEmployee(listEmployee,SIZE);
+                employeeCounter--;
+            } else
+            {
+                printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
+            }
+
             system("pause");
             system("cls");
             break;
         case 4:
             printf("\nINFORMAR\n");
+            printEmployees(listEmployee,SIZE);
             system("pause");
             system("cls");
             break;
         case 5:
             system("cls");
-            printf("\nUsted eligio la opcion de salir. Hasta luego\n");
+            printf("\n\nUsted eligio la opcion de salir. Hasta luego\n");
             system("pause");
             system("cls");
             break;

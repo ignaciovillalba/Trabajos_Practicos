@@ -14,7 +14,7 @@ typedef struct
 
 void mainMenu();
 
-int doSwitchCase1(sEmployee employeeList[], int sizeEmployee, int employeeCounter, int employeeLoaded);
+int doSwitchCase1(sEmployee employeeList[], int sizeEmployee,int IdGenerate);
 
 int initEmployees(sEmployee listEmployee[], int sizeEmployee);
 
@@ -27,12 +27,20 @@ int initEmployees(sEmployee listEmployee[], int sizeEmployee);
  */
 void message(char msj[], float valor);
 
-//void loadEmployee(sEmployee employeeList[], int sizeEmployee);
+int initEmployee(sEmployee employeeList[],int sizeEmployee);
+
+int addEmployee(sEmployee employeeList[],int sizeEmployee,int IdGenerate);
+
+int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID);
+
+void removeEmployee(sEmployee employeeList[], int sizeEmployee);
 
 int findFree(sEmployee employeeList[], int sizeEmployee);
 
-int doSwitchCase1(sEmployee employeeList[], int sizeEmployee, int employeeCounter, int employeeLoaded);
+//void sortEmployee(sEmployee employeeList[], int sizeEmployee, int OrdAscDesc);
 
-int addEmployee(sEmployee employeeList[],int sizeEmployee,int cont);
+void printEmployees(sEmployee employeeList[], int sizeEmployee);
+
+void hardcodearEmployee(sEmployee employeeList[], int sizeEmployee);
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED
