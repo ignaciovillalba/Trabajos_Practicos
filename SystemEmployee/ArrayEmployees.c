@@ -36,11 +36,66 @@ int doSwitchCase1(sEmployee employeeList[], int sizeEmployee,int IdGenerate)
     return employeeLoaded;
 }
 
+void message(char msg[], float value)
+{
+    printf("%s %.2f\n\n", msg, value);
+}
+
+int initEmployee(sEmployee employeeList[],int sizeEmployee)
+{
+    int i;
+    int auxReturn=-1;
+    for(i=0; i<sizeEmployee; i++)
+    {
+        employeeList[i].isEmpty=LIBRE;
+        auxReturn=0;
+    }
+    return auxReturn;
+}
+
+void hardcodearEmployee(sEmployee employeeList[], int sizeEmployee)
+{
+
+    int IdEmployee[4]= {1004, 1005, 1006, 1003};
+    char name[4][51] = {"Pepe","Juan","Leonel","Moni"};
+    char lastName[4][51]= {"Gonzalez","Benito","Gonzalez","Argento"};
+    float salary[4]= {20000.35, 26940.74, 31934.07,15033.48};
+    int sector[4]= {1,2,3,6};
+    int isEmpty[4]= {1,1,1,1};
+
+    int i;
+    for(i=0; i<4; i++)
+    {
+        employeeList[i].IdEmployee= IdEmployee[i];
+        strcpy(employeeList[i].name,name[i]);
+        strcpy(employeeList[i].lastName,lastName[i]);
+        employeeList[i].salary=salary[i];
+        employeeList[i].sector=sector[i];
+        employeeList[i].isEmpty= isEmpty[i];
+    }
+}
+
+int findFreeSpace(sEmployee employeeList[], int sizeEmployee)
+{
+    int i;
+    int index = -1;
+
+    for(i=0; i<sizeEmployee; i++)
+    {
+        if(employeeList[i].isEmpty==LIBRE)
+        {
+            index =  i;
+            break;
+        }
+    }
+    return index;
+}
+
 int addEmployee(sEmployee employeeList[],int sizeEmployee,int IdGenerate)
 {
     int index;
     int auxReturn=-1;
-    index=findFree(employeeList,sizeEmployee);
+    index=findFreeSpace(employeeList,sizeEmployee);
 
     if(index!=-1)
     {
@@ -71,88 +126,21 @@ int addEmployee(sEmployee employeeList[],int sizeEmployee,int IdGenerate)
     return auxReturn;
 }
 
-int initEmployee(sEmployee employeeList[],int sizeEmployee)
+int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID)
 {
     int i;
-    int auxReturn=-1;
-    for(i=0; i<sizeEmployee; i++)
-    {
-        employeeList[i].isEmpty=LIBRE;
-        auxReturn=0;
-    }
-    return auxReturn;
-}
-
-int findFree(sEmployee employeeList[], int sizeEmployee)
-{
-    int i;
-    int index = -1;
-
-    for(i=0; i<sizeEmployee; i++)
-    {
-        if(employeeList[i].isEmpty==LIBRE)
-        {
-            index =  i;
-            break;
-        }
-    }
-    return index;
-}
-
-void message(char msg[], float value)
-{
-    printf("%s %.2f\n\n", msg, value);
-}
-
-void printEmployees(sEmployee employeeList[], int sizeEmployee)
-{
-    int i;
-
-    printf("\t _____________________________________________________________");
-    printf("\n\t|ID\t    NAME\tLAST NAME\tSALARY\t\tSECTOR|\n");
-    printf("\t|_____________________________________________________________|\n");
+    int index=0;
 
     for (i=0; i<sizeEmployee; i++)
     {
-        if (employeeList[i].isEmpty==1)
+        if (employeeID==employeeList[i].IdEmployee && employeeList[i].isEmpty== OCUPADO)
         {
-            printOneEmployee(employeeList[i]);
+            index=1;
+            break;
         }
-
     }
-}
 
-void printOneEmployee(sEmployee employeeList)
-{
-            printf("\t|%4d\t%8s\t%8s\t%5.2f\t  %3d |\n",employeeList.IdEmployee,
-                   employeeList.name,
-                   employeeList.lastName,
-                   employeeList.salary,
-                   employeeList.sector);
-
-            printf("\t|_____________________________________________________________|\n");
-}
-
-void hardcodearEmployee(sEmployee employeeList[], int sizeEmployee)
-{
-
-    int IdEmployee[4]= {1004, 1005, 1006, 1003};
-    char name[4][51] = {"Pepe","Juan","Leonel","Moni"};
-    char lastName[4][51]= {"Gonzalez","Benito","Gonzalez","Argento"};
-    float salary[4]= {20000.35, 26940.74, 31934.07,15033.48};
-    int sector[4]= {1,2,3,6};
-    int isEmpty[4]= {1,1,1,1};
-
-    int i;
-    for(i=0; i<4; i++)
-    {
-        employeeList[i].IdEmployee= IdEmployee[i];
-        strcpy(employeeList[i].name,name[i]);
-        strcpy(employeeList[i].lastName,lastName[i]);
-        employeeList[i].salary=salary[i];
-        employeeList[i].sector=sector[i];
-        employeeList[i].isEmpty= isEmpty[i];
-    }
+    return index;
 }
 
 void removeEmployee(sEmployee employeeList[], int sizeEmployee)
@@ -202,23 +190,36 @@ void removeEmployee(sEmployee employeeList[], int sizeEmployee)
     }
 }
 
-
-int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID)
+void printEmployees(sEmployee employeeList[], int sizeEmployee)
 {
     int i;
-    int index=0;
+
+    printf("\t _____________________________________________________________");
+    printf("\n\t|ID\t    NAME\tLAST NAME\tSALARY\t\tSECTOR|\n");
+    printf("\t|_____________________________________________________________|\n");
 
     for (i=0; i<sizeEmployee; i++)
     {
-        if (employeeID==employeeList[i].IdEmployee && employeeList[i].isEmpty== OCUPADO)
+        if (employeeList[i].isEmpty==1)
         {
-            index=1;
-            break;
+            printOneEmployee(employeeList[i]);
         }
-    }
 
-    return index;
+    }
 }
+
+void printOneEmployee(sEmployee employeeList)
+{
+    printf("\t|%4d\t%8s\t%8s\t%5.2f\t  %3d |\n",employeeList.IdEmployee,
+           employeeList.name,
+           employeeList.lastName,
+           employeeList.salary,
+           employeeList.sector);
+
+    printf("\t|_____________________________________________________________|\n");
+}
+
+
 
 void doSwitchCase2(sEmployee employeeList[], int sizeEmployee)
 {
@@ -313,5 +314,135 @@ void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID)
             while(optionCase2!=5);
         }
     }
+
+}
+
+void doSwitchCase4(sEmployee employeeList[], int sizeEmployee)
+{
+    int optionCase4=0;
+    int optionCaseOrdInv=0;
+    system("cls");
+    do
+    {
+        printf("4. INFORMAR:\n");
+        printf ("%cQu%c desea que se informe?\n\n",168,130);
+        printf("\t1) Listado de los empleados ordenados alfabeticamente por Apellido y Sector.\n");
+        printf("\t2) Total y promedio de los salarios, y cuantos empleados superan el salario promedio.\n");
+        fflush(stdin);
+        optionCase4= GetOption("Ingrese opcion: ");
+        system("cls");
+    }
+    while(optionCase4==0);
+
+    orderEmployees(employeeList, sizeEmployee);
+    switch(optionCase4)
+    {
+    case 1:
+        printf("\t ______________________\n");
+        printf("\t|  MOSTRAR EMPLEADO    |\n");
+        printf("\t|______________________|\n");
+
+        printf("0)Ascendente A=>Z\n");
+        printf("1)Descendente Z=>A  \n");
+        optionCaseOrdInv=GetOption("Ingrese en el orden a mostrar: ");
+        sortEmployee(employeeList,sizeEmployee,optionCaseOrdInv);
+        break;
+    case 2:
+        showSalaryAverage (employeeList, sizeEmployee);
+        break;
+    }
+}
+
+void orderEmployees(sEmployee employeeList[],int sizeEmployee)
+{
+    int i;
+    int j;
+    sEmployee aux;
+    for(i=0; i<sizeEmployee-1; i++)
+    {
+        for(j=i+1; j<sizeEmployee; j++)
+        {
+            if(strcmp(employeeList[i].lastName,employeeList[j].lastName)>0)
+            {
+                aux=employeeList[i];
+                employeeList[i]=employeeList[j];
+                employeeList[j]=aux;
+            }
+            else if(strcmp(employeeList[i].lastName,employeeList[j].lastName)==0 && employeeList[i].sector>employeeList[j].sector)
+            {
+                aux=employeeList[i];
+                employeeList[i]=employeeList[j];
+                employeeList[j]=aux;
+            }
+        }
+    }
+}
+
+void sortEmployee(sEmployee employeeList[], int sizeEmployee, int OrdAscDesc)
+{
+    int i;
+
+    printf("\t _____________________________________________________________");
+    printf("\n\t|ID\t    NAME\tLAST NAME\tSALARY\t\tSECTOR|\n");
+    printf("\t|_____________________________________________________________|\n");
+
+    switch(OrdAscDesc)
+    {
+    case 0:
+        for (i = 0; i < sizeEmployee; i++)
+        {
+            if(employeeList[i].isEmpty == OCUPADO)
+            {
+                printOneEmployee(employeeList[i]);
+            }
+        }
+        break;
+    case 1:
+        for (i = sizeEmployee -1; i >=0; i--)
+        {
+            if(employeeList[i].isEmpty == OCUPADO)
+            {
+                printOneEmployee(employeeList[i]);
+            }
+        }
+        break;
+    }
+}
+
+void showSalaryAverage (sEmployee employeeList[], int sizeEmployee)
+{
+
+    int i;
+    float salaryAcumulator=0;
+    int counter=0;
+    float average;
+
+    for(i=0; i < sizeEmployee; i++)
+    {
+        if(employeeList[i].isEmpty==OCUPADO)
+        {
+            salaryAcumulator = salaryAcumulator + employeeList[i].salary;
+            counter++;
+        }
+    }
+    average = salaryAcumulator/counter;
+
+
+    printf("\t _____________________________________________________________");
+    printf("\n\t|ID\t    NAME\tLAST NAME\tSALARY\t\tSECTOR|\n");
+    printf("\t|_____________________________________________________________|\n");
+    for(i=0; i < sizeEmployee; i++)
+    {
+
+        if(employeeList[i].salary > average && employeeList[i].isEmpty == OCUPADO)
+        {
+            printOneEmployee(employeeList[i]);
+            break;
+        }
+    }
+    printf("\nLa suma total de los salarios es: %.2f\n",salaryAcumulator);
+    printf("El promedio de los salarios es: %.2f\n",average);
+    system("pause");
+    system("cls");
 
 }

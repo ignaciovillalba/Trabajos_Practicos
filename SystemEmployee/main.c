@@ -64,7 +64,7 @@ int main()
             system("cls");
             break;
         case 4:
-            //printEmployees(listEmployee,SIZE);
+            fflush(stdin);
             doSwitchCase4(listEmployee,SIZE);
             system("pause");
             system("cls");
