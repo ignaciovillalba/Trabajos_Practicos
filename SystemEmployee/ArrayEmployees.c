@@ -147,7 +147,6 @@ void removeEmployee(sEmployee employeeList[], int sizeEmployee)
 {
     int auxID=0;
     int findID=0;
-    int i;
     system("cls");
     printf(" _____________________\n");
     printf("| ELIMINAR EMPLEADO  |\n");
@@ -159,14 +158,7 @@ void removeEmployee(sEmployee employeeList[], int sizeEmployee)
 
     if (findID==1)
     {
-        for(i=0; i<sizeEmployee; i++)
-        {
-            if((auxID == employeeList[i].IdEmployee) && (employeeList[i].isEmpty==OCUPADO))
-            {
-                employeeList[i].isEmpty = LIBRE;
-                break;
-            }
-        }
+        changeEmployeeStatus(employeeList,sizeEmployee,auxID);
         printf("Empleado eliminado con exito!\n");
     }
     else
@@ -176,20 +168,27 @@ void removeEmployee(sEmployee employeeList[], int sizeEmployee)
         findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
         if (findID == 1)
         {
-            for(i=0; i<sizeEmployee; i++)
-            {
-                if((auxID == employeeList[i].IdEmployee) && (employeeList[i].isEmpty==OCUPADO))
-                {
-                    employeeList[i].isEmpty = LIBRE;
-                    break;
-                }
-            }
-
+        changeEmployeeStatus(employeeList,sizeEmployee,auxID);
         }
         printf("Empleado eliminado con exito!\n");
     }
 }
 
+
+void changeEmployeeStatus(sEmployee employeeList[], int sizeEmployee,int auxiliaryID)
+{
+    int i;
+
+    for(i=0; i<sizeEmployee; i++)
+    {
+        if((auxiliaryID == employeeList[i].IdEmployee) && (employeeList[i].isEmpty==OCUPADO))
+        {
+            employeeList[i].isEmpty = LIBRE;
+            break;
+        }
+    }
+
+}
 void printEmployees(sEmployee employeeList[], int sizeEmployee)
 {
     int i;

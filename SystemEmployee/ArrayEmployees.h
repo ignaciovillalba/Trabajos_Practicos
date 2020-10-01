@@ -98,6 +98,16 @@ void removeEmployee(sEmployee employeeList[], int sizeEmployee);
  *
  * \param employeeList[] sEmployee
  * \param sizeEmployee int
+ * \param auxiliaryID int
+ * \return void
+ *
+ */
+void changeEmployeeStatus(sEmployee employeeList[], int sizeEmployee, int auxiliaryID);
+
+/** \brief
+ *
+ * \param employeeList[] sEmployee
+ * \param sizeEmployee int
  * \return void
  *
  */
