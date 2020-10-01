@@ -9,9 +9,10 @@ int main()
     int option;
     int employeeLoaded=-1;
     int employeeCounter=0;
+    int confirmRemove=0;
     int idGenerator=1;
-
     sEmployee listEmployee[SIZE];
+
     initEmployee(listEmployee,SIZE);
     hardcodearEmployee(listEmployee,SIZE);
     do
@@ -39,33 +40,22 @@ int main()
             system("cls");
             break;
         case 2:
-            if(employeeCounter!=0)
-            {
-            printf("\nModificar empleados.\n");
-            doSwitchCase2(listEmployee,SIZE);
-            }
-            else
-            {
-                printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
-            }
+            doSwitchCase2(listEmployee,SIZE,employeeCounter);
             system("pause");
             system("cls");
             break;
         case 3:
-            if(employeeCounter!=0)
+            confirmRemove=removeEmployee(listEmployee,SIZE,employeeCounter);
+            if(confirmRemove==1)
             {
-                removeEmployee(listEmployee,SIZE);
                 employeeCounter--;
-            } else
-            {
-                printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
             }
             system("pause");
             system("cls");
             break;
         case 4:
             fflush(stdin);
-            doSwitchCase4(listEmployee,SIZE);
+            doSwitchCase4(listEmployee,SIZE, employeeCounter);
             system("pause");
             system("cls");
             break;
@@ -76,9 +66,7 @@ int main()
             system("cls");
             break;
         }
-
     }
     while(option !=5);
-
     return 0;
 }

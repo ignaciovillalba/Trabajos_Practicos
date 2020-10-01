@@ -143,35 +143,47 @@ int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID)
     return index;
 }
 
-void removeEmployee(sEmployee employeeList[], int sizeEmployee)
+int removeEmployee(sEmployee employeeList[], int sizeEmployee, int employeeCounter)
 {
     int auxID=0;
     int findID=0;
-    system("cls");
-    printf(" _____________________\n");
-    printf("| ELIMINAR EMPLEADO  |\n");
-    printf("|____________________|\n");
+    int auxReturn=0;
 
-    printEmployees(employeeList,sizeEmployee);
-    auxID=GetInt("\n Ingrese el ID del empleado a eliminar: ");
-    findID=FindEmployeeById(employeeList,sizeEmployee,auxID);
-
-    if (findID==1)
+    if(employeeCounter!=0)
     {
-        changeEmployeeStatus(employeeList,sizeEmployee,auxID);
-        printf("Empleado eliminado con exito!\n");
+        system("cls");
+        printf(" _____________________\n");
+        printf("| ELIMINAR EMPLEADO  |\n");
+        printf("|____________________|\n");
+
+        printEmployees(employeeList,sizeEmployee);
+        auxID=GetInt("\n Ingrese el ID del empleado a eliminar: ");
+        findID=FindEmployeeById(employeeList,sizeEmployee,auxID);
+
+        if (findID==1)
+        {
+            changeEmployeeStatus(employeeList,sizeEmployee,auxID);
+            printf("Empleado eliminado con exito!\n");
+            auxReturn=1;
+        }
+        else
+        {
+            printf("ERROR! El ID ingresado no existe\n");
+            auxID=GetInt("\nReingrese el ID del empleado a eliminar: ");
+            findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
+            if (findID == 1)
+            {
+                changeEmployeeStatus(employeeList,sizeEmployee,auxID);
+            }
+            printf("Empleado eliminado con exito!\n");
+            auxReturn=1;
+        }
     }
     else
     {
-        printf("ERROR! El ID ingresado no existe\n");
-        auxID=GetInt("\nReingrese el ID del empleado a eliminar: ");
-        findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
-        if (findID == 1)
-        {
-        changeEmployeeStatus(employeeList,sizeEmployee,auxID);
-        }
-        printf("Empleado eliminado con exito!\n");
+        printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
     }
+    return auxReturn;
 }
 
 
@@ -220,32 +232,21 @@ void printOneEmployee(sEmployee employeeList)
 
 
 
-void doSwitchCase2(sEmployee employeeList[], int sizeEmployee)
+void doSwitchCase2(sEmployee employeeList[], int sizeEmployee, int employeeCounter)
 {
     int auxID;
     int findID=-1;
     int i;
-    system("cls");
-    printf(" _____________________\n");
-    printf("|  MODIFICAR EMPLEADO |\n");
-    printf("|_____________________|\n");
-    printEmployees(employeeList,sizeEmployee);
-    auxID=GetInt("\nIngrese el ID del empleado a modificar: ");
-    findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
-
-    if (findID == 1)
+    if(employeeCounter!=0)
     {
-        for(i=0; i<sizeEmployee; i++)
-        {
-            modifyEmployee(employeeList,sizeEmployee, auxID);
-            break;
-        }
-    }
-    else
-    {
-        printf("ERROR! El ID ingresado no existe\n");
-        auxID=GetInt("\nReingrese el ID del empleado a modificar: ");
+        system("cls");
+        printf(" _____________________\n");
+        printf("|  MODIFICAR EMPLEADO |\n");
+        printf("|_____________________|\n");
+        printEmployees(employeeList,sizeEmployee);
+        auxID=GetInt("\nIngrese el ID del empleado a modificar: ");
         findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
+
         if (findID == 1)
         {
             for(i=0; i<sizeEmployee; i++)
@@ -254,8 +255,27 @@ void doSwitchCase2(sEmployee employeeList[], int sizeEmployee)
                 break;
             }
         }
-        printf("Usted ha modificado el empleado con exito.\n");
+        else
+        {
+            printf("ERROR! El ID ingresado no existe\n");
+            auxID=GetInt("\nReingrese el ID del empleado a modificar: ");
+            findID=FindEmployeeById(employeeList,sizeEmployee, auxID);
+            if (findID == 1)
+            {
+                for(i=0; i<sizeEmployee; i++)
+                {
+                    modifyEmployee(employeeList,sizeEmployee, auxID);
+                    break;
+                }
+            }
+            printf("Usted ha modificado el empleado con exito.\n");
+        }
     }
+    else
+    {
+        printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
+    }
+
 }
 
 void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID)
@@ -313,42 +333,48 @@ void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID)
             while(optionCase2!=5);
         }
     }
-
 }
 
-void doSwitchCase4(sEmployee employeeList[], int sizeEmployee)
+void doSwitchCase4(sEmployee employeeList[], int sizeEmployee, int employeeCounter)
 {
     int optionCase4=0;
     int optionCaseOrdInv=0;
-    system("cls");
-    do
+    if(employeeCounter!=0)
     {
-        printf("4. INFORMAR:\n");
-        printf ("%cQu%c desea que se informe?\n\n",168,130);
-        printf("\t1) Listado de los empleados ordenados alfabeticamente por Apellido y Sector.\n");
-        printf("\t2) Total y promedio de los salarios, y cuantos empleados superan el salario promedio.\n");
-        fflush(stdin);
-        optionCase4= GetOption("Ingrese opcion: ");
         system("cls");
+        do
+        {
+            printf("4. INFORMAR:\n");
+            printf ("%cQu%c desea que se informe?\n\n",168,130);
+            printf("\t1) Listado de los empleados ordenados alfabeticamente por Apellido y Sector.\n");
+            printf("\t2) Total y promedio de los salarios, y cuantos empleados superan el salario promedio.\n");
+            fflush(stdin);
+            optionCase4= GetOption("Ingrese opcion: ");
+            system("cls");
+        }
+        while(optionCase4==0);
+
+        orderEmployees(employeeList, sizeEmployee);
+        switch(optionCase4)
+        {
+        case 1:
+            printf("\t ______________________\n");
+            printf("\t|  MOSTRAR EMPLEADO    |\n");
+            printf("\t|______________________|\n");
+
+            printf("0)Ascendente A=>Z\n");
+            printf("1)Descendente Z=>A  \n");
+            optionCaseOrdInv=GetOption("Ingrese en el orden a mostrar: ");
+            sortEmployee(employeeList,sizeEmployee,optionCaseOrdInv);
+            break;
+        case 2:
+            showSalaryAverage (employeeList, sizeEmployee);
+            break;
+        }
     }
-    while(optionCase4==0);
-
-    orderEmployees(employeeList, sizeEmployee);
-    switch(optionCase4)
+    else
     {
-    case 1:
-        printf("\t ______________________\n");
-        printf("\t|  MOSTRAR EMPLEADO    |\n");
-        printf("\t|______________________|\n");
-
-        printf("0)Ascendente A=>Z\n");
-        printf("1)Descendente Z=>A  \n");
-        optionCaseOrdInv=GetOption("Ingrese en el orden a mostrar: ");
-        sortEmployee(employeeList,sizeEmployee,optionCaseOrdInv);
-        break;
-    case 2:
-        showSalaryAverage (employeeList, sizeEmployee);
-        break;
+        printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
     }
 }
 

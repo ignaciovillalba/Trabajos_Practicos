@@ -67,3 +67,32 @@
 1601393894 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\validation.c
 	"Validation.h"
 
+1601586333 source:c:\users\nacho\desktop\tp_laboratorio_1\systememployee\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"GetElements.h"
+
+1601586359 c:\users\nacho\desktop\tp_laboratorio_1\systememployee\arrayemployees.h
+
+1601578990 c:\users\nacho\desktop\tp_laboratorio_1\systememployee\getelements.h
+
+1601578990 source:c:\users\nacho\desktop\tp_laboratorio_1\systememployee\getelements.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Validation.h"
+
+1601578990 c:\users\nacho\desktop\tp_laboratorio_1\systememployee\validation.h
+
+1601578990 source:c:\users\nacho\desktop\tp_laboratorio_1\systememployee\validation.c
+	"Validation.h"
+
+1601586299 source:c:\users\nacho\desktop\tp_laboratorio_1\systememployee\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"GetElements.h"
+

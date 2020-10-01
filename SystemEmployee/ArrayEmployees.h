@@ -12,7 +12,7 @@ typedef struct
 
 }sEmployee;
 
-/** \brief
+/** \brief Show Menu
  *
  * \return void
  *
@@ -92,7 +92,7 @@ int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID)
  * \return void
  *
  */
-void removeEmployee(sEmployee employeeList[], int sizeEmployee);
+int removeEmployee(sEmployee employeeList[], int sizeEmployee, int employeeCounter);
 
 /** \brief
  *
@@ -125,10 +125,11 @@ void printOneEmployee(sEmployee employeeList);
  *
  * \param employeeList[] sEmployee
  * \param sizeEmployee int
+ * \param employeeCounter int
  * \return void
  *
  */
-void doSwitchCase2(sEmployee employeeList[], int sizeEmployee);
+void doSwitchCase2(sEmployee employeeList[], int sizeEmployee, int employeeCounter);
 
 /** \brief
  *
@@ -140,14 +141,16 @@ void doSwitchCase2(sEmployee employeeList[], int sizeEmployee);
  */
 void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID);
 
+
 /** \brief
  *
  * \param employeeList[] sEmployee
  * \param sizeEmployee int
+ * \param employeeCounter int
  * \return void
  *
  */
-void doSwitchCase4(sEmployee employeeList[], int sizeEmployee);
+void doSwitchCase4(sEmployee employeeList[], int sizeEmployee, int employeeCounter);
 
 /** \brief
  *
@@ -168,7 +171,7 @@ void orderEmployees(sEmployee employeeList[],int sizeEmployee);
  */
 void sortEmployee(sEmployee employeeList[], int sizeEmployee, int OrdAscDesc);
 
-/** \brief
+/** \brief Calculate
  *
  * \param
  * \param
@@ -176,6 +179,5 @@ void sortEmployee(sEmployee employeeList[], int sizeEmployee, int OrdAscDesc);
  *
  */
 void showSalaryAverage (sEmployee employeeList[], int sizeEmployee);
-
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED
