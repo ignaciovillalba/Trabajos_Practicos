@@ -42,6 +42,7 @@ int main()
             if(employeeCounter!=0)
             {
             printf("\nModificar empleados.\n");
+            doSwitchCase2(listEmployee,SIZE);
             }
             else
             {
@@ -59,13 +60,12 @@ int main()
             {
                 printf("ERROR! NO HAY NINGUN EMPLEADO DISPONIBLE.\n");
             }
-
             system("pause");
             system("cls");
             break;
         case 4:
-            printf("\nINFORMAR\n");
-            printEmployees(listEmployee,SIZE);
+            //printEmployees(listEmployee,SIZE);
+            doSwitchCase4(listEmployee,SIZE);
             system("pause");
             system("cls");
             break;

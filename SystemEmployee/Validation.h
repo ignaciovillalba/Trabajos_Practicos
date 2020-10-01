@@ -30,4 +30,4 @@ int Validation_Integer(char stringInteger[]);
  *                    1 for OK.
  *
  */
-int Validate_IntID(char[]);
+int Validation_IntID(char[]);

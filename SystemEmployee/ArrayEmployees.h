@@ -16,8 +16,6 @@ void mainMenu();
 
 int doSwitchCase1(sEmployee employeeList[], int sizeEmployee,int IdGenerate);
 
-int initEmployees(sEmployee listEmployee[], int sizeEmployee);
-
 /** \brief Print a message
  *
  * \param msj[] char Receives a message to be shown.
@@ -29,18 +27,24 @@ void message(char msj[], float valor);
 
 int initEmployee(sEmployee employeeList[],int sizeEmployee);
 
+void hardcodearEmployee(sEmployee employeeList[], int sizeEmployee);
+
+int findFree(sEmployee employeeList[], int sizeEmployee);
+
 int addEmployee(sEmployee employeeList[],int sizeEmployee,int IdGenerate);
 
 int FindEmployeeById(sEmployee employeeList[], int sizeEmployee, int employeeID);
 
 void removeEmployee(sEmployee employeeList[], int sizeEmployee);
 
-int findFree(sEmployee employeeList[], int sizeEmployee);
-
 //void sortEmployee(sEmployee employeeList[], int sizeEmployee, int OrdAscDesc);
 
 void printEmployees(sEmployee employeeList[], int sizeEmployee);
 
-void hardcodearEmployee(sEmployee employeeList[], int sizeEmployee);
+void printOneEmployee(sEmployee employeeList);
+
+void doSwitchCase2(sEmployee employeeList[], int sizeEmployee);
+
+void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID);
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED
