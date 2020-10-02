@@ -96,3 +96,32 @@
 	"ArrayEmployees.h"
 	"GetElements.h"
 
+1601653351 source:c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"GetElements.h"
+
+1601654302 c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\arrayemployees.h
+
+1601653351 c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\getelements.h
+
+1601653351 source:c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\getelements.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Validation.h"
+
+1601653351 c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\validation.h
+
+1601653351 source:c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"GetElements.h"
+
+1601653351 source:c:\users\ignacio\desktop\utn\clases\tp_laboratorio_1\systememployee\validation.c
+	"Validation.h"
+
