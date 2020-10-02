@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ArrayEmployees.h"
 #include "GetElements.h"
-#define SIZE 6
+#define SIZE 1000
 
 int main()
 {
