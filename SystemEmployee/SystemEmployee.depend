@@ -38,33 +38,33 @@
 1589488862 source:c:\users\ignacio\desktop\utn\laboratorio 2020\trabajos_practicos\tp_laboratorio_2\systememployee\validation.c
 	"Validation.h"
 
-1601562207 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\arrayemployees.c
+1601657834 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\arrayemployees.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"ArrayEmployees.h"
 	"GetElements.h"
 
-1601562159 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\arrayemployees.h
+1601654302 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\arrayemployees.h
 
-1601393894 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\getelements.h
+1601653351 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\getelements.h
 
-1601552775 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\getelements.c
+1601654524 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\getelements.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"Validation.h"
 
-1601552891 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\validation.h
+1601653351 c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\validation.h
 
-1601558517 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\main.c
+1601657888 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayEmployees.h"
 	"GetElements.h"
 
-1601393894 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\validation.c
+1601653351 source:c:\users\ignacio\desktop\utn\laboratorio 2020\tp_laboratorio_1\systememployee\validation.c
 	"Validation.h"
 
 1601586333 source:c:\users\nacho\desktop\tp_laboratorio_1\systememployee\arrayemployees.c

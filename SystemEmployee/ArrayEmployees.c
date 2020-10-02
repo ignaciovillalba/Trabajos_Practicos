@@ -316,7 +316,11 @@ void modifyEmployee(sEmployee employeeList[], int sizeEmployee, int auxID)
                     GetString("\nIngrese el nuevo Apellido: ", employeeList[i].lastName,sizeEmployee);
                     break;
                 case 3:
-                    employeeList[i].salary=GetFloat("\nIngrese el nuevo salario: ");
+                    do
+                    {
+                        employeeList[i].salary=GetFloat("\nIngrese el nuevo salario: ");
+                    }
+                    while(employeeList[i].salary<1);
                     break;
                 case 4:
                     employeeList[i].sector=GetInt("\nIngrese el nuevo sector (1 a 10): ");
@@ -459,15 +463,12 @@ void showSalaryAverage (sEmployee employeeList[], int sizeEmployee)
     for(i=0; i < sizeEmployee; i++)
     {
 
-        if(employeeList[i].salary > average && employeeList[i].isEmpty == OCUPADO)
+        if(employeeList[i].salary >= average && employeeList[i].isEmpty == OCUPADO)
         {
             printOneEmployee(employeeList[i]);
-            break;
         }
     }
     printf("\nLa suma total de los salarios es: %.2f\n",salaryAcumulator);
     printf("El promedio de los salarios es: %.2f\n",average);
-    system("pause");
-    system("cls");
 
 }
