@@ -22,4 +22,132 @@ void Menu()
     printf("Ingrese opcion: ");
 }
 
+int employee_CompareByName(void* e1, void* e2)
+{
+    int returnValue;
+    if(e1!=NULL && e2!=NULL)
+    {
+        Employee* emp1=(Employee*)e1;
+        Employee* emp2=(Employee*)e2;
+        returnValue = strcasecmp(emp1->nombre, emp2->nombre);
+    }
 
+    return returnValue;
+}
+
+int employee_CompareById(Employee* e1, Employee* e2)
+{
+    int comparar=0;
+
+    if(e1->id > e2->id)
+    {
+        comparar= 1;
+    }
+    else
+    {
+        if(e1->id<e2->id)
+        {
+            comparar=-1;
+        }
+    }
+    return comparar;
+}
+
+int employee_setId(Employee* this,int id)
+{
+    int returnValue=0;
+
+    if(id!=NULL && this!=NULL)
+    {
+        this->id=id;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_getId(Employee* this,int* id)
+{
+    int returnValue=0;
+
+    if(id!=NULL && this!=NULL)
+    {
+        id=this->id;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_setNombre(Employee* this,char* nombre)
+{
+    int returnValue=0;
+
+    if(nombre!=NULL && this!=NULL)
+    {
+        strcpy(this->nombre,nombre);
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_getNombre(Employee* this,char* nombre)
+{
+    int returnValue=0;
+
+    if(nombre!=NULL && this!=NULL)
+    {
+        strcpy(*nombre,this->nombre);
+        returnValue=1;
+    }
+
+    return returnValue;
+}
+
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+{
+    int returnValue=0;
+
+    if(horasTrabajadas!=NULL && this!=NULL)
+    {
+        this->horasTrabajadas=horasTrabajadas;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
+{
+    int returnValue=0;
+
+    if(horasTrabajadas!=NULL && this!=NULL)
+    {
+        horasTrabajadas=this->horasTrabajadas;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_setSueldo(Employee* this,int sueldo)
+{
+    int returnValue=0;
+
+    if(sueldo!=NULL && this!=NULL)
+    {
+        this->sueldo=sueldo;
+        returnValue=1;
+    }
+
+    return returnValue;
+}
+
+int employee_getSueldo(Employee* this,int* sueldo)
+{
+    int returnValue=0;
+
+    if(sueldo!=NULL && this!=NULL)
+    {
+        *sueldo=this->sueldo;
+        returnValue=1;
+    }
+
+    return returnValue;
+}

@@ -88,21 +88,22 @@
 
 1533118622 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/LinkedList.h
 
-1603831595 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.h
+1603909003 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.h
 
-1603831639 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.c
+1603907706 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.c
 	<stdlib.h>
 	<stdio_ext.h>
 	<stdio.h>
 	"Employee.h"
 	<string.h>
 
-1603831613 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/main.c
+1603908204 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	<string.h>
 
 1533118622 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Controller.h
 
