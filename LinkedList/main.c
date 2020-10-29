@@ -9,6 +9,7 @@
 int main()
 {
     int option;
+    int contID=1;
     LinkedList* listaEmpleados;
 
     listaEmpleados= ll_newLinkedList();
@@ -29,25 +30,26 @@ int main()
             controller_loadFromText("data.csv",listaEmpleados);
             break;
         case 2:
-            //controller_loadFromBinary
+            controller_loadFromBinary("data.dat",listaEmpleados);
             break;
         case 3:
-            //controller_addEmployee
+            controller_addEmployee(listaEmpleados,contID);
+            contID++;
             break;
         case 4:
             //controller_editEmployee
             break;
         case 5:
-            // controller_removeEmployee
+            controller_removeEmployee(listaEmpleados);
             break;
         case 6:
-            //controller_ListEmployee
+            controller_ListEmployee(listaEmpleados);
             break;
         case 7:
             //controller_sortEmployee
             break;
         case 8:
-            //controller_saveAsText("data.csv",myEmployee);
+            controller_saveAsText("data.csv",listaEmpleados);
             break;
         case 9:
             //controller_saveAsBinary
@@ -57,7 +59,6 @@ int main()
             getchar();
             break;
         }
-        system("clear");
     }
     while(option!=10);
 

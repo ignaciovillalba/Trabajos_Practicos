@@ -10,18 +10,39 @@ void Menu()
     printf("\t|Bienvenido al sistema de empleados  |\n");
     printf("\t|____________________________________|\n\n");
     printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
-    printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n");
+    printf("2. Cargar los datos de los empleados desde el archivo data.dat (modo binario).\n");
     printf("3. Alta de empleado\n");
     printf("4. Modificar datos de empleado\n");
     printf("5. Baja de empleado\n");
     printf("6. Listar empleados\n");
     printf("7. Ordenar empleados\n");
     printf("8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-    printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
+    printf("9. Guardar los datos de los empleados en el archivo data.dat (modo binario).\n");
     printf("10. Salir\n\n");
     printf("Ingrese opcion: ");
 }
 
+Employee* employee_new(void)
+{
+    Employee* pEmployee;
+    pEmployee=(Employee*)malloc(sizeof(Employee));
+    return pEmployee;
+}
+
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr)
+{
+    Employee* pEmployee;
+    pEmployee=employee_new();
+
+    if(pEmployee!=NULL)
+    {
+        employee_setId(pEmployee,atoi(idStr));
+        employee_setNombre(pEmployee,nombreStr);
+        employee_setHorasTrabajadas(pEmployee,atoi(horasTrabajadasStr));
+        employee_setSueldo(pEmployee,atof(sueldoStr));
+    }
+    return pEmployee;
+}
 int employee_CompareByName(void* e1, void* e2)
 {
     int returnValue;
@@ -120,7 +141,7 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 
     if(horasTrabajadas!=NULL && this!=NULL)
     {
-        horasTrabajadas=this->horasTrabajadas;
+        *horasTrabajadas=this->horasTrabajadas;
         returnValue=1;
     }
     return returnValue;
@@ -150,4 +171,9 @@ int employee_getSueldo(Employee* this,int* sueldo)
     }
 
     return returnValue;
+}
+
+int GenerarId(int id,int cont)
+{
+    return id+cont;
 }

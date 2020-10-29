@@ -7,9 +7,11 @@ typedef struct
     int horasTrabajadas;
     int sueldo;
 }Employee;
+
 void Menu();
+
 Employee* employee_new();
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr);
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr);
 void employee_delete();
 
 int employee_setId(Employee* this,int id);
@@ -26,5 +28,7 @@ int employee_getSueldo(Employee* this,int* sueldo);
 
 int employee_CompareByName(void* e1, void* e2);
 int employee_CompareById(Employee* e1, Employee* e2);
+
+int GenerarId(int id,int cont);
 
 #endif // employee_H_INCLUDED

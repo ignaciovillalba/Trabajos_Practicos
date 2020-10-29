@@ -80,24 +80,27 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1533118626 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Controller.c
+1603944356 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Controller.c
 	<stdio.h>
 	<stdlib.h>
+	<stdio_ext.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
+	"Controller.h"
 
 1533118622 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/LinkedList.h
 
-1603909003 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.h
+1603937711 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.h
 
-1603907706 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.c
+1603937702 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Employee.c
 	<stdlib.h>
 	<stdio_ext.h>
 	<stdio.h>
 	"Employee.h"
 	<string.h>
 
-1603908204 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/main.c
+1603944662 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -105,11 +108,13 @@
 	"Employee.h"
 	<string.h>
 
-1533118622 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Controller.h
+1603941405 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/Controller.h
 
-1533118622 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/parser.c
+1603944560 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+
+1533118622 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList/parser.h
 
