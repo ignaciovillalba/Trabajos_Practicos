@@ -30,14 +30,14 @@ int main()
             controller_loadFromText("data.csv",listaEmpleados);
             break;
         case 2:
-            controller_loadFromBinary("data.dat",listaEmpleados);
+            controller_loadFromBinary("data.csv",listaEmpleados);
             break;
         case 3:
             controller_addEmployee(listaEmpleados,contID);
             contID++;
             break;
         case 4:
-            //controller_editEmployee
+            controller_editEmployee(listaEmpleados);
             break;
         case 5:
             controller_removeEmployee(listaEmpleados);

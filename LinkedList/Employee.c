@@ -4,6 +4,7 @@
 #include "Employee.h"
 #include <string.h>
 
+
 void Menu()
 {
     printf("\t ------------------------------------\n");
@@ -74,99 +75,99 @@ int employee_CompareById(Employee* e1, Employee* e2)
     return comparar;
 }
 
-int employee_setId(Employee* this,int id)
+int employee_setId(Employee* employeeList,int id)
 {
     int returnValue=0;
 
-    if(id!=NULL && this!=NULL)
+    if(id!=NULL && employeeList!=NULL)
     {
-        this->id=id;
+        employeeList->id=id;
         returnValue=1;
     }
     return returnValue;
 }
 
-int employee_getId(Employee* this,int* id)
+int employee_getId(Employee* employeeList,int* id)
 {
     int returnValue=0;
 
-    if(id!=NULL && this!=NULL)
+    if(id!=NULL && employeeList!=NULL)
     {
-        id=this->id;
+        id=employeeList->id;
         returnValue=1;
     }
     return returnValue;
 }
 
-int employee_setNombre(Employee* this,char* nombre)
+int employee_setNombre(Employee* employeeList,char* nombre)
 {
     int returnValue=0;
 
-    if(nombre!=NULL && this!=NULL)
+    if(nombre!=NULL && employeeList!=NULL)
     {
-        strcpy(this->nombre,nombre);
+        strcpy(employeeList->nombre,nombre);
         returnValue=1;
     }
     return returnValue;
 }
 
-int employee_getNombre(Employee* this,char* nombre)
+int employee_getNombre(Employee* employeeList,char* nombre)
 {
     int returnValue=0;
 
-    if(nombre!=NULL && this!=NULL)
+    if(nombre!=NULL && employeeList!=NULL)
     {
-        strcpy(*nombre,this->nombre);
-        returnValue=1;
-    }
-
-    return returnValue;
-}
-
-int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
-{
-    int returnValue=0;
-
-    if(horasTrabajadas!=NULL && this!=NULL)
-    {
-        this->horasTrabajadas=horasTrabajadas;
-        returnValue=1;
-    }
-    return returnValue;
-}
-
-int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
-{
-    int returnValue=0;
-
-    if(horasTrabajadas!=NULL && this!=NULL)
-    {
-        *horasTrabajadas=this->horasTrabajadas;
-        returnValue=1;
-    }
-    return returnValue;
-}
-
-int employee_setSueldo(Employee* this,int sueldo)
-{
-    int returnValue=0;
-
-    if(sueldo!=NULL && this!=NULL)
-    {
-        this->sueldo=sueldo;
+        strcpy(*nombre,employeeList->nombre);
         returnValue=1;
     }
 
     return returnValue;
 }
 
-int employee_getSueldo(Employee* this,int* sueldo)
+int employee_setHorasTrabajadas(Employee* employeeList,int horasTrabajadas)
 {
     int returnValue=0;
 
-    if(sueldo!=NULL && this!=NULL)
+    if(horasTrabajadas!=NULL && employeeList!=NULL)
     {
-        *sueldo=this->sueldo;
+        employeeList->horasTrabajadas=horasTrabajadas;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_getHorasTrabajadas(Employee* employeeList,int* horasTrabajadas)
+{
+    int returnValue=0;
+
+    if(horasTrabajadas!=NULL && employeeList!=NULL)
+    {
+        *horasTrabajadas=employeeList->horasTrabajadas;
+        returnValue=1;
+    }
+    return returnValue;
+}
+
+int employee_setSueldo(Employee* employeeList,int sueldo)
+{
+    int returnValue=0;
+
+    if(sueldo!=NULL && employeeList!=NULL)
+    {
+        employeeList->sueldo=sueldo;
+        returnValue=1;
+    }
+
+    return returnValue;
+}
+
+int employee_getSueldo(Employee* employeeList,int* sueldo)
+{
+    int returnValue=0;
+
+    if(sueldo!=NULL && employeeList!=NULL)
+    {
+        *sueldo=employeeList->sueldo;
         returnValue=1;
     }
 
@@ -176,4 +177,32 @@ int employee_getSueldo(Employee* this,int* sueldo)
 int GenerarId(int id,int cont)
 {
     return id+cont;
+}
+
+int employee_FindById(LinkedList* pArrayListEmployee, int id)
+{
+    Employee* employee;
+    int auxId;
+    int i;
+    int index=-1;
+    int size;
+
+    if(pArrayListEmployee != NULL)
+    {
+        size=ll_len(pArrayListEmployee);
+
+        for(i=0; i<size; i++)
+        {
+            employee=(Employee*)ll_get(pArrayListEmployee, i);
+            auxId=employee->id;
+            employee_getId(employee, &auxId);
+
+            if(id == auxId){
+                index=i;
+                break;
+            }
+        }
+    }
+    return index;
+
 }

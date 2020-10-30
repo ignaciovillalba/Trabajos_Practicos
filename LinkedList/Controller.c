@@ -120,7 +120,66 @@ int controller_addEmployee(LinkedList* pArrayListEmployee,int contID)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno=-1;
+    int auxID;
+    int index=-1;
+    int opcion;
+    Employee* employee;
+    char auxNombre[128];
+    int auxHorasTrabajadas;
+    int auxSueldo;
+
+    if(pArrayListEmployee != NULL)
+    {
+        controller_ListEmployee(pArrayListEmployee);
+        printf("Que empleado desea modificar?: ");
+        scanf("%d",&auxID);
+
+        index=employee_FindById(pArrayListEmployee,auxID);
+        if(index != -1)
+        {
+            employee=(Employee*)ll_get(pArrayListEmployee,index);
+            do{
+                printf("Que desea modificar?: ");
+                printf("\n 1) Nombre.\n 2)Horas trabajadas.\n 3)Sueldo.\n 4)Salir \n Ingrese opcion: ");
+                scanf("%d",&opcion);
+
+                switch(opcion)
+                {
+                case 1:
+                    printf("Ingrese nuevo nombre del empleado: ");
+                    scanf("%s",auxNombre);
+                    employee_setNombre(employee,auxNombre);
+                    system("clear");
+                    break;
+                case 2:
+                    printf("Ingrese nuevas horas trabajadas del empleado: ");
+                    scanf("%d",&auxHorasTrabajadas);
+                    employee_setHorasTrabajadas(employee,auxHorasTrabajadas);
+                    system("clear");
+                    break;
+                case 3:
+                    printf("Ingrese nuevo sueldo del empleado: ");
+                    scanf("%d",&auxSueldo);
+                    employee_setSueldo(employee,auxSueldo);
+                    system("clear");
+                    break;
+                case 4:
+                    printf("Empleado modificado con exito.");
+                    break;
+                }
+            }
+            while(opcion!=4);
+
+            retorno=1;
+        }
+    }
+    else
+    {
+        retorno=0;
+    }
+
+    return retorno;
 }
 
 /** \brief Baja de empleado
@@ -236,7 +295,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 
         retorno=1;
     }
-*/
+    */
 
     return 1;
 }

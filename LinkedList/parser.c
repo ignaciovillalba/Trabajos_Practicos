@@ -66,7 +66,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
                 break;
             }
             employee=employee_new();
-            leyo=fread(employee,sizeof(Employee),1,pFile);
+            leyo=fread(&employee,sizeof(Employee),1,pFile);
             if(leyo==1)
             {
                 ll_add(pArrayListEmployee,employee);
