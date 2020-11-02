@@ -168,9 +168,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
         printf("Que empleado desea eliminar?");
         scanf("%d",&auxID);
 
-        //ll_remove(pArrayListEmployee,auxID-1);
         auxEmployee=ll_pop(pArrayListEmployee,auxID-1);
-        printf("EMPLEADO ELIMINADO");
+        printf("EMPLEADO ELIMINADO: \n");
         printf("%4d %15s %4d %4d\n",auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
     }
 
@@ -235,40 +234,18 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
-    /*FILE* archive;
-    Employee* myEmployee;
-    int size;
-    int retorno=0;
+     FILE* myTextFile;
+    int ret=0;
 
-    if(path!=NULL && pArrayListEmployee!=NULL)
+    if(pArrayListEmployee != NULL && path != NULL && ll_isEmpty(pArrayListEmployee)==0)
     {
-        archive=fopen(path,"w");
-        if(archive!=NULL)
+        myTextFile=fopen(path, "w");
+        if(myTextFile!= NULL)
         {
-            fprintf(archive, "id,nombre,horasTrabajadas,sueldo\n");
-
-            size=ll_len(pArrayListEmployee);
-            for(int i=0; i<size; i++)
-            {
-                myEmployee=(Employee*)ll_get(pArrayListEmployee, i);
-
-                if(employee_getId(myEmployee, &id)==1 && employee_getHoursWorked(myEmployee, &hoursWorked)==1 &&
-                        employee_getName(myEmployee, name)==1 && employee_getSalary(myEmployee, &salary)==1)
-                {
-                    ret=1;
-                    fprintf(pFile, "%d,%s,%d,%f\n", id, name, hoursWorked, salary);
-                }
-            }
-            fclose(pFile);
-
-
+            ret=parser_EmployeeToText(myTextFile, pArrayListEmployee);
         }
-
-        retorno=1;
     }
-    */
-
-    return 1;
+    return ret;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
@@ -280,6 +257,18 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
+    /*FILE* myBinaryFile;
+    int ret=0;
+
+    if(path!=NULL && pArrayListEmployee!= NULL && ll_isEmpty(pArrayListEmployee)==0)
+    {
+        myBinaryFile=fopen(path, "wb");
+        if(myBinaryFile!=NULL)
+        {
+            ret=parser_EmployeeToBinary(myBinaryFile, pArrayListEmployee);
+        }
+    }
+*/
     return 1;
 }
 
