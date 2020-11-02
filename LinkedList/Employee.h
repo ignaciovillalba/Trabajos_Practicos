@@ -32,4 +32,6 @@ int employee_CompareById(Employee* e1, Employee* e2);
 
 int GenerarId(int id,int cont);
 int employee_FindById(LinkedList* pArrayListEmployee, int id);
+
+int employee_modifyEmployee(Employee* employeeList);
 #endif // employee_H_INCLUDED

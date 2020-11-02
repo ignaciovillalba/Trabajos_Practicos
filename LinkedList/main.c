@@ -10,6 +10,7 @@ int main()
 {
     int option;
     int contID=1;
+    int confirmacion;
     LinkedList* listaEmpleados;
 
     listaEmpleados= ll_newLinkedList();
@@ -28,6 +29,7 @@ int main()
         {
         case 1:
             controller_loadFromText("data.csv",listaEmpleados);
+            confirmacion=getchar();
             break;
         case 2:
             controller_loadFromBinary("data.csv",listaEmpleados);

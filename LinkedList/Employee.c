@@ -197,7 +197,8 @@ int employee_FindById(LinkedList* pArrayListEmployee, int id)
             auxId=employee->id;
             employee_getId(employee, &auxId);
 
-            if(id == auxId){
+            if(id == auxId)
+            {
                 index=i;
                 break;
             }
@@ -205,4 +206,46 @@ int employee_FindById(LinkedList* pArrayListEmployee, int id)
     }
     return index;
 
+}
+
+
+int employee_modifyEmployee(Employee* employeeList)
+{
+    char auxNombre[128];
+    int auxHorasTrabajadas;
+    int auxSueldo;
+    int opcion;
+
+    do
+    {
+        printf("Que desea modificar?: ");
+        printf("\n 1) Nombre.\n 2)Horas trabajadas.\n 3)Sueldo.\n 4)Salir \n Ingrese opcion: ");
+        scanf("%d",&opcion);
+
+        switch(opcion)
+        {
+        case 1:
+            printf("Ingrese nuevo nombre del empleado: ");
+            scanf("%s",auxNombre);
+            employee_setNombre(employeeList,auxNombre);
+            system("clear");
+            break;
+        case 2:
+            printf("Ingrese nuevas horas trabajadas del empleado: ");
+            scanf("%d",&auxHorasTrabajadas);
+            employee_setHorasTrabajadas(employeeList,auxHorasTrabajadas);
+            system("clear");
+            break;
+        case 3:
+            printf("Ingrese nuevo sueldo del empleado: ");
+            scanf("%d",&auxSueldo);
+            employee_setSueldo(employeeList,auxSueldo);
+            system("clear");
+            break;
+        case 4:
+            printf("Empleado modificado con exito.");
+            break;
+        }
+    }
+    while(opcion!=4);
 }
