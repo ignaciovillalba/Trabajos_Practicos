@@ -14,22 +14,22 @@
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
     Employee* myEmployee;
-    char auxId[10];
-    char auxNombre[128];
-    char auxHorasTrabajadas[10];
-    char auxSueldo[10];
+    char auxID[10];
+    char auxName[128];
+    char auxWorkedHours[10];
+    char auxSalary[10];
     int leyo;
     int retorno=0;
 
     if(pFile!=NULL && pArrayListEmployee!=NULL)
     {
-        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",auxID,auxName,auxWorkedHours,auxSalary);
         while(!feof(pFile))
         {
-            leyo=fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+            leyo=fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",auxID,auxName,auxWorkedHours,auxSalary);
             if(leyo==4)
             {
-                myEmployee=employee_newParametros(auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+                myEmployee=employee_newParametros(auxID,auxName,auxWorkedHours,auxSalary);
                 ll_add(pArrayListEmployee,myEmployee);
             }
             if(feof(pFile))
@@ -55,8 +55,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-    Employee* employee;
-    int leyo;
+    Employee* myEmployee;
 
     if(pFile!=NULL && pArrayListEmployee !=NULL)
     {
@@ -66,49 +65,76 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
             {
                 break;
             }
-            employee=employee_new();
-            leyo=fread(&employee,sizeof(Employee),1,pFile);
-            if(leyo==1)
+            myEmployee=employee_new();
+            if(myEmployee!=NULL)
             {
-                ll_add(pArrayListEmployee,employee);
+                if(fread(myEmployee,sizeof(Employee),1,pFile)==1)
+                {
+                    ll_add(pArrayListEmployee,myEmployee);
+                }
             }
         }
         fclose(pFile);
         controller_ListEmployee(pArrayListEmployee);
     }
-
     return 1;
 }
 
-int parser_EmployeeToText(FILE* pFile , LinkedList* pArrayListEmployee)
+int parser_EmployeeToText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-      Employee* employee;
+    Employee* myEmployee;
     int i;
     int size;
-    int id;
-    char name[100];
-    int hoursWorked;
-    float salary;
-    int ret=0;
+    int auxID;
+    char auxName[100];
+    int auxWorkedHours;
+    int auxSalary;
+    int retorno=0;
 
     if(pFile != NULL && pArrayListEmployee != NULL)
     {
-        fprintf(pFile, "id,nombre,horasTrabajadas,sueldo\n");
 
+        fprintf(pFile, "id,nombre,horasTrabajadas,sueldo\n");
         size=ll_len(pArrayListEmployee);
         for(i=0; i<size; i++)
         {
-            employee=(Employee*)ll_get(pArrayListEmployee, i);
+            myEmployee=(Employee*)ll_get(pArrayListEmployee, i);
 
-            if(employee_getId(employee, &id)==1 && employee_getHorasTrabajadas(employee, &hoursWorked)==1 &&
-               employee_getNombre(employee, name)==1 && employee_getSueldo(employee, &salary)==1)
+            if(employee_getId(myEmployee, &auxID)==1 && employee_getHorasTrabajadas(myEmployee, &auxWorkedHours)==1 &&
+                    employee_getNombre(myEmployee, auxName)==1 && employee_getSueldo(myEmployee, &auxSalary)==1)
             {
-                ret=1;
-                fprintf(pFile, "%d,%s,%d,%f\n", id, name, hoursWorked, salary);
+                retorno=1;
+                fprintf(pFile, "%d,%s,%d,%d\n", auxID, auxName, auxWorkedHours, auxSalary);
             }
         }
+        ll_clear(pArrayListEmployee);
         fclose(pFile);
 
     }
-    return ret;
+    return retorno;
 }
+
+int parser_EmployeeToBinary(FILE* pFile, LinkedList* pArrayListEmployee)
+{
+    Employee* myEmployee;
+    int size;
+    int i;
+    int retorno=0;
+
+    if(pFile != NULL && pArrayListEmployee != NULL)
+    {
+
+        size=ll_len(pArrayListEmployee);
+
+        for(i=0; i<size; i++)
+        {
+            myEmployee=(Employee*)ll_get(pArrayListEmployee, i);
+            fwrite(myEmployee, sizeof(Employee),1,pFile);
+        }
+        fclose(pFile);
+        retorno=1;
+    }
+
+    return retorno;
+}
+

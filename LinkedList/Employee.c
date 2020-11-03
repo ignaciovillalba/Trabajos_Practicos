@@ -79,7 +79,7 @@ int employee_setId(Employee* employeeList,int id)
 {
     int returnValue=0;
 
-    if(id!=NULL && employeeList!=NULL)
+    if(id>0 && employeeList!=NULL)
     {
         employeeList->id=id;
         returnValue=1;
@@ -93,7 +93,7 @@ int employee_getId(Employee* employeeList,int* id)
 
     if(id!=NULL && employeeList!=NULL)
     {
-        id=employeeList->id;
+        *id=employeeList->id;
         returnValue=1;
     }
     return returnValue;
@@ -117,7 +117,7 @@ int employee_getNombre(Employee* employeeList,char* nombre)
 
     if(nombre!=NULL && employeeList!=NULL)
     {
-        strcpy(*nombre,employeeList->nombre);
+        strcpy(nombre,employeeList->nombre);
         returnValue=1;
     }
 
@@ -128,7 +128,7 @@ int employee_setHorasTrabajadas(Employee* employeeList,int horasTrabajadas)
 {
     int returnValue=0;
 
-    if(horasTrabajadas!=NULL && employeeList!=NULL)
+    if(employeeList!=NULL)
     {
         employeeList->horasTrabajadas=horasTrabajadas;
         returnValue=1;
@@ -152,7 +152,7 @@ int employee_setSueldo(Employee* employeeList,int sueldo)
 {
     int returnValue=0;
 
-    if(sueldo!=NULL && employeeList!=NULL)
+    if(employeeList!=NULL)
     {
         employeeList->sueldo=sueldo;
         returnValue=1;
@@ -211,13 +211,14 @@ int employee_FindById(LinkedList* pArrayListEmployee, int id)
 
 int employee_modifyEmployee(Employee* employeeList)
 {
-    char auxNombre[128];
+    char auxNombre[51];
     int auxHorasTrabajadas;
     int auxSueldo;
     int opcion;
 
     do
     {
+        printf("%4d%15s%4d%4d\n",employeeList->id,employeeList->nombre,employeeList->horasTrabajadas,employeeList->sueldo);
         printf("Que desea modificar?: ");
         printf("\n 1) Nombre.\n 2)Horas trabajadas.\n 3)Sueldo.\n 4)Salir \n Ingrese opcion: ");
         scanf("%d",&opcion);
@@ -243,9 +244,10 @@ int employee_modifyEmployee(Employee* employeeList)
             system("clear");
             break;
         case 4:
-            printf("Empleado modificado con exito.");
+            printf("Empleado modificado con exito.\n\n");
             break;
         }
     }
     while(opcion!=4);
+    return 1;
 }

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-//#include
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
@@ -17,21 +16,21 @@
  */
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
-    FILE* archive;
-    int retorno;
-    archive=(FILE*)malloc(sizeof(FILE));
+    FILE* pFile;
+    int retorno=-1;
+    pFile=(FILE*)malloc(sizeof(FILE));
 
     if(path!=NULL && pArrayListEmployee!= NULL)
     {
-        archive=fopen(path,"r");
-        if(archive!=NULL)
+        pFile=fopen(path,"r");
+        if(pFile!=NULL)
         {
-            retorno=parser_EmployeeFromText(archive,pArrayListEmployee);
+            retorno=parser_EmployeeFromText(pFile,pArrayListEmployee);
         }
         else
         {
             printf("Archivo inexistente,se procedera a crear una carpeta.\n");
-            archive=fopen(path,"w");
+            pFile=fopen(path,"w");
         }
     }
     return retorno;
@@ -46,21 +45,21 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    FILE* archive;
-    int retorno;
-    archive=(FILE*)malloc(sizeof(FILE));
+    FILE* pFile;
+    int retorno=-1;
 
     if(path!=NULL && pArrayListEmployee!= NULL)
     {
-        archive=fopen(path,"rb");
-        if(archive!=NULL)
+        ll_clear(pArrayListEmployee);
+        pFile=fopen(path,"rb");
+        if(pFile!=NULL)
         {
-            retorno=parser_EmployeeFromBinary(archive,pArrayListEmployee);
+            retorno=parser_EmployeeFromBinary(pFile,pArrayListEmployee);
         }
         else
         {
-            printf("Archivo inexistente,se procedera a crear una carpeta.\n");
-            archive=fopen(path,"wb");
+            printf("Archivo inexistente. Creando archivo data.dat.\n");
+            pFile=fopen(path,"wb");
         }
     }
     return retorno;
@@ -80,7 +79,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee,int contID)
     char auxNombre[128];
     int auxHorasTrabajadas;
     int auxsueldo;
-    int retorno=0;
+    int retorno=-1;
 
     if(pArrayListEmployee!=NULL)
     {
@@ -90,7 +89,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee,int contID)
             auxID=GenerarId(1000,contID);
             printf("ID Nuevo empleado: %d\n", auxID);
             printf("Ingrese nombre: ");
-
             __fpurge(stdin);
             scanf("%s",auxNombre);
             printf("Ingrese horas trabajadas: ");
@@ -159,6 +157,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
     int auxID;
+    int findID;
+    int retorno=-1;
     Employee* auxEmployee;
 
     if(pArrayListEmployee!=NULL)
@@ -168,12 +168,18 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
         printf("Que empleado desea eliminar?");
         scanf("%d",&auxID);
 
-        auxEmployee=ll_pop(pArrayListEmployee,auxID-1);
-        printf("EMPLEADO ELIMINADO: \n");
-        printf("%4d %15s %4d %4d\n",auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
+        findID=employee_FindById(pArrayListEmployee,auxID);
+        if(findID!=-1)
+        {
+            auxEmployee=ll_pop(pArrayListEmployee,findID);
+            printf("EMPLEADO ELIMINADO: \n");
+            printf("%4d %15s %4d %4d\n",auxEmployee->id,auxEmployee->nombre,auxEmployee->horasTrabajadas,auxEmployee->sueldo);
+            retorno=1;
+        }
+
     }
 
-    return 1;
+    return retorno;
 }
 
 /** \brief Listar empleados
@@ -186,9 +192,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
     int i;
-    int retorno=0;
+    int retorno=-1;
     int size;
-
     Employee* auxEmployee;
 
     if(pArrayListEmployee != NULL)
@@ -208,7 +213,6 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
             retorno=1;
         }
-
     }
     return retorno;
 }
@@ -234,18 +238,18 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
-     FILE* myTextFile;
-    int ret=0;
+    FILE* pArchive;
+    int retorno=-1;
 
     if(pArrayListEmployee != NULL && path != NULL && ll_isEmpty(pArrayListEmployee)==0)
     {
-        myTextFile=fopen(path, "w");
-        if(myTextFile!= NULL)
+        pArchive=fopen(path, "w");
+        if(pArchive!= NULL)
         {
-            ret=parser_EmployeeToText(myTextFile, pArrayListEmployee);
+            retorno=parser_EmployeeToText(pArchive, pArrayListEmployee);
         }
     }
-    return ret;
+    return retorno;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
@@ -257,18 +261,18 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    /*FILE* myBinaryFile;
-    int ret=0;
+    FILE* pArchive;
+    int retorno=-1;
 
     if(path!=NULL && pArrayListEmployee!= NULL && ll_isEmpty(pArrayListEmployee)==0)
     {
-        myBinaryFile=fopen(path, "wb");
-        if(myBinaryFile!=NULL)
+        pArchive=fopen(path, "wb");
+        if(pArchive!=NULL)
         {
-            ret=parser_EmployeeToBinary(myBinaryFile, pArrayListEmployee);
+            retorno=parser_EmployeeToBinary(pArchive, pArrayListEmployee);
         }
     }
-*/
-    return 1;
+
+    return retorno;
 }
 

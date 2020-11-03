@@ -5,14 +5,12 @@
 #include "Employee.h"
 #include <string.h>
 
-
 int main()
 {
     int option;
     int contID=1;
     int confirmacion;
     LinkedList* listaEmpleados;
-
     listaEmpleados= ll_newLinkedList();
 
     do
@@ -32,7 +30,7 @@ int main()
             confirmacion=getchar();
             break;
         case 2:
-            controller_loadFromBinary("data.csv",listaEmpleados);
+            controller_loadFromBinary("data.dat",listaEmpleados);
             break;
         case 3:
             controller_addEmployee(listaEmpleados,contID);
@@ -54,11 +52,10 @@ int main()
             controller_saveAsText("data.csv",listaEmpleados);
             break;
         case 9:
-            //controller_saveAsBinary
+            controller_saveAsBinary("data.dat",listaEmpleados);
             break;
         case 10:
             printf("Usted ha elegido la opcion de salir. Hasta luego! \n");
-            getchar();
             break;
         }
     }
