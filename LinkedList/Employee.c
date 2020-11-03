@@ -46,33 +46,100 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 }
 int employee_CompareByName(void* e1, void* e2)
 {
-    int returnValue;
-    if(e1!=NULL && e2!=NULL)
-    {
-        Employee* emp1=(Employee*)e1;
-        Employee* emp2=(Employee*)e2;
-        returnValue = strcasecmp(emp1->nombre, emp2->nombre);
-    }
+    Employee* auxEmployee1;
+    Employee* auxEmployee2;
+    char name1[100];
+    char name2[100];
+    int returnValue=0;
 
+    if(  e1!=NULL && e2 != NULL)
+    {
+        auxEmployee1=(Employee*)e1;
+        auxEmployee2=(Employee*)e2;
+
+        employee_getNombre(auxEmployee1, name1);
+        employee_getNombre(auxEmployee2, name2);
+
+        returnValue= strcmp(name1, name2);
+    }
     return returnValue;
 }
 
-int employee_CompareById(Employee* e1, Employee* e2)
+int employee_CompareById(void* e1, void* e2)
 {
-    int comparar=0;
+    Employee* auxEmployee1;
+    Employee* auxEmployee2;
+    int id1;
+    int id2;
+    int returnValue;
+    if(e1 != NULL && e2 != NULL)
+    {
+        auxEmployee1=(Employee*)e1;
+        auxEmployee2=(Employee*)e2;
 
-    if(e1->id > e2->id)
-    {
-        comparar= 1;
-    }
-    else
-    {
-        if(e1->id<e2->id)
+        employee_getId(auxEmployee1, &id1);
+        employee_getId(auxEmployee2, &id2);
+
+        if(id1 > id2)
         {
-            comparar=-1;
+            returnValue=1;
+        }
+        if(id1 < id2){
+            returnValue=0;
         }
     }
-    return comparar;
+    return returnValue;
+}
+
+int employee_CompareByWorkedHours(void* e1, void* e2)
+{
+    Employee* auxEmployee1;
+    Employee* auxEmployee2;
+    int workedHours1;
+    int workedHours2;
+
+    int returnValue=0;
+
+    if(e1 != NULL && e2 != NULL)
+    {
+        auxEmployee1=(Employee*)e1;
+        auxEmployee2=(Employee*)e2;
+
+        employee_getHorasTrabajadas(auxEmployee1, &workedHours1);
+        employee_getHorasTrabajadas(auxEmployee2, &workedHours2);
+
+        if(workedHours1 > workedHours2)
+        {
+            returnValue=1;
+        }
+    }
+    return returnValue;
+
+}
+
+int employee_CompareBySalary(void* e1, void* e2)
+{
+    Employee* auxEmployee1;
+    Employee* auxEmployee2;
+    int salary1;
+    int salary2;
+
+    int returnValue=0;
+
+    if(e1 != NULL && e2 != NULL)
+    {
+        auxEmployee1=(Employee*)e1;
+        auxEmployee2=(Employee*)e2;
+
+        employee_getSueldo(auxEmployee1, &salary1);
+        employee_getSueldo(auxEmployee2, &salary2);
+
+        if(salary1 > salary2)
+        {
+            returnValue=1;
+        }
+    }
+    return returnValue;
 }
 
 int employee_setId(Employee* employeeList,int id)

@@ -226,7 +226,46 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int option;
+    int retorno=0;
+    LinkedList* auxList;
+    auxList=ll_clone(pArrayListEmployee);
+
+    if(pArrayListEmployee!= NULL && auxList != NULL && ll_isEmpty(auxList)==0)
+    {
+        retorno=1;
+        do
+        {
+            printf("MENU DE ORDENAMIENTOS\n1.Ordenar por nombre alfabeticamente\n2.Ordenar por id\n3.Ordenar por salario\n4.Ordenar por horas trabajadas\n5.Salir\nIngrese la opcion: ");
+            scanf("%d",&option);
+            if(option!=5){
+                printf("Ordenando...\n");
+            }
+            switch(option)
+            {
+            case 1:
+                ll_sort(auxList, employee_CompareByName, 1);
+                break;
+            case 2:
+                ll_sort(auxList, employee_CompareById, 1);
+                break;
+            case 3:
+                ll_sort(auxList, employee_CompareBySalary, 1);
+                break;
+            case 4:
+                ll_sort(auxList, employee_CompareByWorkedHours, 1);
+                break;
+            }
+            if(option!=5)
+            {
+                controller_ListEmployee(auxList);
+            }
+        }
+        while(option!=5);
+        ll_deleteLinkedList(auxList);
+    }
+
+    return retorno;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
