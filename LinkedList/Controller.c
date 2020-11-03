@@ -58,8 +58,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
         }
         else
         {
-            printf("Archivo inexistente. Creando archivo data.dat.\n");
-            pFile=fopen(path,"wb");
+            printf("Archivo inexistente.\n");
         }
     }
     return retorno;
@@ -200,8 +199,8 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     {
         size = ll_len(pArrayListEmployee);
         if(size!=0)
-        {
-
+        {   //recorrer lista y mostrar (2 funciones)
+           // employee_showEmployee(pArrayListEmployee,size);
             printf("\t ______________________________________________\n");
             printf("\t|ID \t   NOMBRE \tHORAS TRABAJO\tSALARIO|\n");
             for(i=0; i<size; i++)
@@ -210,7 +209,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
                 printf("\t|%3d %15s\t%4d\t\t%4d  |\n", auxEmployee->id, auxEmployee->nombre, auxEmployee->horasTrabajadas, auxEmployee->sueldo);
             }
             printf("\t|______________________________________________|\n");
-
+//////////////////////////////
             retorno=1;
         }
     }
@@ -264,7 +263,6 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         while(option!=5);
         ll_deleteLinkedList(auxList);
     }
-
     return retorno;
 }
 

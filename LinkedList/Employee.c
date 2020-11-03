@@ -37,6 +37,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
     if(pEmployee!=NULL)
     {
+        //agregar if de los set
         employee_setId(pEmployee,atoi(idStr));
         employee_setNombre(pEmployee,nombreStr);
         employee_setHorasTrabajadas(pEmployee,atoi(horasTrabajadasStr));
@@ -71,7 +72,7 @@ int employee_CompareById(void* e1, void* e2)
     Employee* auxEmployee2;
     int id1;
     int id2;
-    int returnValue;
+    int returnValue=0;
     if(e1 != NULL && e2 != NULL)
     {
         auxEmployee1=(Employee*)e1;
@@ -84,9 +85,14 @@ int employee_CompareById(void* e1, void* e2)
         {
             returnValue=1;
         }
-        if(id1 < id2){
-            returnValue=0;
+        else
+        {
+            if(id1 < id2)
+            {
+                returnValue=-1;
+            }
         }
+
     }
     return returnValue;
 }

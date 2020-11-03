@@ -32,7 +32,6 @@ int employee_CompareById(void* e1, void* e2);
 int employee_CompareByWorkedHours(void* e1, void* e2);
 int employee_CompareBySalary(void* e1, void* e2);
 
-
 int GenerarId(int id,int cont);
 int employee_FindById(LinkedList* pArrayListEmployee, int id);
 
