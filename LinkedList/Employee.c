@@ -45,6 +45,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     }
     return pEmployee;
 }
+
 int employee_CompareByName(void* e1, void* e2)
 {
     Employee* auxEmployee1;

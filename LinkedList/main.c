@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio_ext.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
@@ -9,7 +9,8 @@ int main()
 {
     int option;
     int contID=1;
-    int confirmacion;
+    int leyoTXT=0;
+    int leyoBin=0;
     LinkedList* listaEmpleados;
     listaEmpleados= ll_newLinkedList();
 
@@ -26,38 +27,101 @@ int main()
         switch(option)
         {
         case 1:
-            controller_loadFromText("data.csv",listaEmpleados);
-            confirmacion=getchar();
+            if(leyoTXT==0 && leyoBin==0)
+            {
+                leyoTXT=controller_loadFromText("data.csv",listaEmpleados);
+            }
+            else
+            {
+                printf("Archivo abierto en modo binario.\n");
+            }
             break;
         case 2:
-            controller_loadFromBinary("data.dat",listaEmpleados);
+            if(leyoTXT==0 && leyoBin==0)
+            {
+                leyoBin=controller_loadFromBinary("data.dat",listaEmpleados);
+            }
+            else
+            {
+                printf("Archivo abierto en modo texto.\n");
+            }
             break;
         case 3:
-            controller_addEmployee(listaEmpleados,contID);
-            contID++;
+            if(leyoTXT==1 ||leyoBin==1)
+            {
+                controller_addEmployee(listaEmpleados,contID);
+                contID++;
+            }else
+                {
+                    printf("Aun no se cargo ningun archivo. Seleccione 1 o 2\n");
+                }
             break;
         case 4:
-            controller_editEmployee(listaEmpleados);
+            if(leyoTXT==1 ||leyoBin==1)
+            {
+                controller_editEmployee(listaEmpleados);
+            }else
+                {
+                    printf("Aun no se cargo ningun archivo. Seleccione 1 o 2\n");
+                }
             break;
         case 5:
-            controller_removeEmployee(listaEmpleados);
+            if(leyoTXT==1 ||leyoBin==1)
+            {
+                controller_removeEmployee(listaEmpleados);
+            }else
+                {
+                    printf("Aun no se cargo ningun archivo. Seleccione 1 o 2\n");
+                }
             break;
         case 6:
-            controller_ListEmployee(listaEmpleados);
+            if(leyoTXT==1 ||leyoBin==1)
+            {
+                controller_ListEmployee(listaEmpleados);
+            }else
+                {
+                    printf("Aun no se cargo ningun archivo. Seleccione 1 o 2\n");
+                }
             break;
         case 7:
-            controller_sortEmployee(listaEmpleados);
+            if(leyoTXT==1 ||leyoBin==1)
+            {
+                controller_sortEmployee(listaEmpleados);
+            }else
+                {
+                    printf("Aun no se cargo ningun archivo. Seleccione 1 o 2\n");
+                }
             break;
         case 8:
-            controller_saveAsText("data.csv",listaEmpleados);
+            if(leyoTXT==1 && leyoBin==0)
+            {
+                controller_saveAsText("data.csv",listaEmpleados);
+                printf("Lista guardada con exito.\n");
+            }
+            else
+            {
+                printf("Archivo abierto en modo binario, guardarlo en la opcion 9.\n");
+            }
             break;
         case 9:
-            controller_saveAsBinary("data.dat",listaEmpleados);
+            if(leyoTXT==0 && leyoBin==1)
+            {
+                controller_saveAsBinary("data.dat",listaEmpleados);
+            }
+            else
+            {
+                printf("Archivo abierto en modo texto, guardarlo en la opcion 8.\n");
+            }
+
             break;
         case 10:
             printf("Usted ha elegido la opcion de salir. Hasta luego! \n");
             break;
         }
+        printf("\nPresione una tecla para continuar");
+        __fpurge(stdin);
+        getchar();
+        system("clear");
     }
     while(option!=10);
 

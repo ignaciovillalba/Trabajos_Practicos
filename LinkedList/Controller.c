@@ -246,7 +246,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
                 ll_sort(auxList, employee_CompareByName, 1);
                 break;
             case 2:
-                ll_sort(auxList, employee_CompareById, 1);
+                ll_sort(auxList, employee_CompareById, 0);
                 break;
             case 3:
                 ll_sort(auxList, employee_CompareBySalary, 1);
@@ -255,7 +255,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
                 ll_sort(auxList, employee_CompareByWorkedHours, 1);
                 break;
             }
-            if(option!=5)
+            if(option==5)
             {
                 controller_ListEmployee(auxList);
             }
