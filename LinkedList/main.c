@@ -107,6 +107,7 @@ int main()
             if(leyoTXT==0 && leyoBin==1)
             {
                 controller_saveAsBinary("data.dat",listaEmpleados);
+                printf("Lista guardada con exito.\n");
             }
             else
             {

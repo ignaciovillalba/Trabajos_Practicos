@@ -37,7 +37,6 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 
     if(pEmployee!=NULL)
     {
-        //agregar if de los set
         employee_setId(pEmployee,atoi(idStr));
         employee_setNombre(pEmployee,nombreStr);
         employee_setHorasTrabajadas(pEmployee,atoi(horasTrabajadasStr));
@@ -281,7 +280,6 @@ int employee_FindById(LinkedList* pArrayListEmployee, int id)
     return index;
 
 }
-
 
 int employee_modifyEmployee(Employee* employeeList)
 {

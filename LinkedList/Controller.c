@@ -94,7 +94,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee,int contID)
             scanf("%d",&auxHorasTrabajadas);
             printf("Ingrese sueldo: ");
             scanf("%d",&auxsueldo);
-
             if(employee_setId(myEmployee,auxID)==1 &&
                     employee_setNombre(myEmployee,auxNombre)==1 &&
                     employee_setHorasTrabajadas(myEmployee,auxHorasTrabajadas)==1 &&
@@ -193,23 +192,31 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     int i;
     int retorno=-1;
     int size;
+    int auxID;
+    char auxName[100];
+    int auxWorkedHours;
+    int auxSalary;
     Employee* auxEmployee;
 
     if(pArrayListEmployee != NULL)
     {
         size = ll_len(pArrayListEmployee);
         if(size!=0)
-        {   //recorrer lista y mostrar (2 funciones)
-           // employee_showEmployee(pArrayListEmployee,size);
+        {
             printf("\t ______________________________________________\n");
             printf("\t|ID \t   NOMBRE \tHORAS TRABAJO\tSALARIO|\n");
             for(i=0; i<size; i++)
             {
                 auxEmployee =(Employee*)ll_get(pArrayListEmployee, i);
-                printf("\t|%3d %15s\t%4d\t\t%4d  |\n", auxEmployee->id, auxEmployee->nombre, auxEmployee->horasTrabajadas, auxEmployee->sueldo);
+                if(employee_getId(auxEmployee,&auxID)==1 &&
+                        employee_getNombre(auxEmployee,auxName)==1 &&
+                        employee_getHorasTrabajadas(auxEmployee,&auxWorkedHours)==1 &&
+                        employee_getSueldo(auxEmployee,&auxSalary)==1 )
+                {
+                    printf("\t|%3d %15s\t%4d\t\t%4d  |\n",auxID, auxName, auxWorkedHours, auxSalary);
+                }
             }
             printf("\t|______________________________________________|\n");
-//////////////////////////////
             retorno=1;
         }
     }
@@ -237,7 +244,8 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         {
             printf("MENU DE ORDENAMIENTOS\n1.Ordenar por nombre alfabeticamente\n2.Ordenar por id\n3.Ordenar por salario\n4.Ordenar por horas trabajadas\n5.Salir\nIngrese la opcion: ");
             scanf("%d",&option);
-            if(option!=5){
+            if(option!=5)
+            {
                 printf("Ordenando...\n");
             }
             switch(option)
