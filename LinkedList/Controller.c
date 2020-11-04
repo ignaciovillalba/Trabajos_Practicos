@@ -320,4 +320,3 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 
     return retorno;
 }
-

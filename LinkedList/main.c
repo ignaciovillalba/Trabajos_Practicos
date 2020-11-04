@@ -13,7 +13,6 @@ int main()
     int leyoBin=0;
     LinkedList* listaEmpleados;
     listaEmpleados= ll_newLinkedList();
-
     do
     {
         do

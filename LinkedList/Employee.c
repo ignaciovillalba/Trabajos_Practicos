@@ -230,7 +230,6 @@ int employee_setSueldo(Employee* employeeList,int sueldo)
         employeeList->sueldo=sueldo;
         returnValue=1;
     }
-
     return returnValue;
 }
 

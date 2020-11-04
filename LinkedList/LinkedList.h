@@ -31,7 +31,6 @@ struct LinkedList
 }typedef LinkedList;
 #endif
 
-//Publicas
 LinkedList* ll_newLinkedList(void);//Crea linkedlist en memoria = constructor en MD
 
 int ll_len(LinkedList* this);//cuenta cuantos elementos tenemos guardados en la lista, recibe LL =lista de empleados
