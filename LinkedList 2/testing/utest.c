@@ -53,7 +53,7 @@ void utest_printStatistics(char* testName)
 
     if(utest_totalTestsCounter!=utest_okTestsCounter || VERBOSE_TEST == 1)
     {
-        printf(utest_printErrorBuffer);
+        printf("%s",utest_printErrorBuffer);
     }
     utest_printErrorBuffer[0] = '\0';  // CLEAN ERROR BUFFER
 
@@ -72,7 +72,7 @@ void utest_printStatistics(char* testName)
 
     utest_print("********************************************************************\r\n\r\n");
 
-    printf(utest_printErrorBuffer);
+    printf("%s",utest_printErrorBuffer);
     utest_printErrorBuffer[0] = '\0'; // CLEAN ERROR BUFFER
 }
 
@@ -97,7 +97,6 @@ void utest_startTest(void(*fncTest)(void),void(*fncBefore)(void),char* testName)
 			utest_print("TEST OK\r\n");
 			utest_okTestsCounter++;
 		}
-
 
 	}
 }

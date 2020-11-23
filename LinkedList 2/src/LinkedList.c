@@ -220,31 +220,27 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
-    Node* node;
-    Node* next;
+    Node* pNode=NULL;
+    Node* deletedNode;
 
-    if(this != NULL && index > -1 && index < ll_len(this))
+    if(this!=NULL && index >=0 &&  index < ll_len(this) &&  ll_len(this)>0)
     {
-        if(index == 0)
+        if(index==0)
         {
-            next = getNode(this,index+1);
-            node = getNode(this,index);
-            free(node);
-            this->pFirstNode = next;
-
+            pNode=getNode(this,index);
+            this->pFirstNode=pNode->pNextNode;
+            free(pNode);
         }
         else
         {
-            next = getNode(this,index+1);
-            node = getNode(this,index);
-            free(node);
-            node = getNode(this,index-1);
-            node->pNextNode = next;
+            pNode=getNode(this, index-1);
+            deletedNode=pNode->pNextNode;
+            pNode->pNextNode=deletedNode->pNextNode;
+            free(deletedNode);
         }
         this->size--;
-        ret = 0;
+        returnAux=0;
     }
-
     return returnAux;
 }
 
@@ -259,6 +255,15 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL)
+    {
+        while(ll_len(this)>0)
+        {
+            ll_remove(this,ll_len(this)-1);
+        }
+        returnAux=0;
+    }
 
     return returnAux;
 }
@@ -275,6 +280,14 @@ int ll_deleteLinkedList(LinkedList* this)
 {
     int returnAux = -1;
 
+    if(this!=NULL)
+    {
+        if(ll_clear(this)==0)
+        {
+            free(this);
+            returnAux=0;
+        }
+    }
     return returnAux;
 }
 
