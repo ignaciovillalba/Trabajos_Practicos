@@ -14,7 +14,7 @@ int main()
     sEmployee listEmployee[SIZE];
 
     initEmployee(listEmployee,SIZE);
-   // hardcodearEmployee(listEmployee,SIZE);
+    hardcodearEmployee(listEmployee,SIZE);
     do
     {
         mainMenu();
