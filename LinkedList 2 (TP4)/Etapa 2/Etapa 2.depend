@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1606509426 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+
+1606507179 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/LinkedList.h
+
+1606507079 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/Employee.h
+	"LinkedList.h"
+
+1606507053 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/parser.h
+
+1606509881 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/Controller.h
+
+1606509199 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/Employee.c
+	<stdlib.h>
+	<stdio_ext.h>
+	<stdio.h>
+	"Employee.h"
+	<string.h>
+
+1606507197 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../inc/LinkedList.h"
+
+1606135438 /home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/inc/LinkedList.h
+
+1606510008 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/main.c
+	<stdlib.h>
+	<stdio_ext.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	<string.h>
+
+1606507063 source:/home/ignacio/Escritorio/TP_Laboratorio_1/LinkedList 2 (TP4)/Etapa 2/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+
